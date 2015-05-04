@@ -66,11 +66,11 @@ class GameUI extends Sprite
 	{
 		Actuate.apply (dropDownmenu, { y: (main.stage.stageHeight) / 2 } );
 		Actuate.tween (dropDownmenu, 0.7, { y: (main.stage.stageHeight) -1050 } ).onComplete(removeMenu, null);
+		main.gameUnPause();
 	}
 	
 	function removeMenu()
 	{
-		main.gameUnPause();
 		removeChild(dropDownmenu);
 		menuShown = false;
 	}
