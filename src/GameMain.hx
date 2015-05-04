@@ -25,10 +25,18 @@ class GameMain extends Sprite
 		super();	
 		this.main = main;
 		
-		trace ("game") ;
-		
+		createBackground();
 		createObjects();
 		createBooks();	
+	
+	}
+	
+		
+		
+	function createBackground ()
+	{
+		var backGround:StaticObject = new StaticObject("img/background.png");
+		addChild(backGround);
 	}
 	
 	function createBooks ()

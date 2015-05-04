@@ -24,9 +24,16 @@ class Mainmenu extends Sprite
 	{
 		super();	
 		this.main = main;
+		createBackground();
 		createButtons();
-		playMusic();
+		//playMusic();
 
+	}
+	
+		function createBackground ()
+	{
+		var backGround:StaticObject = new StaticObject("img/background.png");
+		addChild(backGround);
 	}
 	
 	private function createButtons()
@@ -45,7 +52,6 @@ class Mainmenu extends Sprite
 		exitButton.y = 0;
 		exitButton.addEventListener( MouseEvent.CLICK, onClickExit );
 		addChild( exitButton );
-		
 	}
 	
 		function onClick( event:MouseEvent)

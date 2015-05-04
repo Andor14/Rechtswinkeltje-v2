@@ -17,8 +17,10 @@ class Main extends Sprite
 	var inited:Bool;
 	var gameMain:GameMain;
 	var mainMenu:Mainmenu;
+	var gameUI:GameUI;
 	public var sound:Sound;
 	public var music:Music;
+	var pause:Bool = false ;
 	
 	
 	function resize(e) 
@@ -61,6 +63,26 @@ class Main extends Sprite
 		removeChild (mainMenu) ;
 		gameMain = new GameMain(this);
 		addChild(gameMain) ;
+		gameUI = new GameUI(this);
+		addChild(gameUI);
+	}
+	
+	public function backToMain()
+	{
+		removeChild (gameMain);
+		removeChild (gameUI);
+		addChild (mainMenu);
+	}
+		
+	public function gamePause ()
+	{
+		gameMain.alpha = 0.3 ;
+		pause = true ;
+	}
+	public function gameUnPause ()
+	{
+		gameMain.alpha = 1 ;
+		pause = false ;
 	}
 	
 	/* SETUP */
