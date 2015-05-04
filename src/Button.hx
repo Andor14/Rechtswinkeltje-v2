@@ -9,28 +9,19 @@ import openfl.events.MouseEvent;
  * ...
  * @author Andor
  */
-class Button extends Sprite
+class Button extends StaticObject
 {
 
-	var imgNormal:Bitmap;
 	var imgHover:Bitmap; 
 	
 	
 	public function new(image:String, imageHover:String) 
 	{
-		super();
-		imgNormal = new Bitmap(Assets.getBitmapData(image));
+		super(image);
 		imgHover = new Bitmap(Assets.getBitmapData(imageHover));
-		draw();
 		addEventListener(MouseEvent.MOUSE_OVER, OnMouseOver);
 		addEventListener(MouseEvent.MOUSE_OUT, OnMouseOut);
 	}
-	
-	function draw()
-	{
-		addChild(imgNormal);
-	}
-	
 	
 	function OnMouseOver(e:MouseEvent) 
 	{
@@ -42,7 +33,7 @@ class Button extends Sprite
 	function OnMouseOut(e:MouseEvent) 
 	{
 		removeChildren();
-		addChild(imgNormal);
+		addChild(img);
 	}
 	
 }

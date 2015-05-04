@@ -14,6 +14,7 @@ class GameMain extends Sprite
 	
 	var main:Main;
 	var book1:Book;
+	var desk:StaticObject;
 	
 	public function new(main:Main) 
 	{
@@ -22,7 +23,8 @@ class GameMain extends Sprite
 		
 		trace ("game") ;
 		
-		createBooks();
+		createObjects();
+		createBooks();	
 	}
 	
 	function createBooks ()
@@ -35,6 +37,16 @@ class GameMain extends Sprite
 		addChild( book1 );
 		
 		book1.addEventListener( MouseEvent.MOUSE_DOWN, startDragging );
+	}
+	
+	function createObjects ()
+	{
+		desk = new StaticObject ("img/desk.png");
+		desk.x = 700;
+		desk.y = 450;
+		desk.scaleX = 0.5 ;
+		desk.scaleY = 0.5 ;
+		addChild(desk);
 	}
 	
 	function startDragging( event:MouseEvent ):Void
