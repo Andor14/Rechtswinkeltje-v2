@@ -2,9 +2,12 @@ package ;
 
 import flash.display.Sprite;
 import flash.events.Event;
+import openfl.Assets;
+import openfl.display.Bitmap;
 //import flash.Lib;
 import openfl.Lib;
 import openfl.display.StageDisplayState;
+
 
 
 /**
@@ -21,6 +24,7 @@ class Main extends Sprite
 	public var sound:Sound;
 	public var music:Music;
 	var pause:Bool = false ;
+	var pauseOverlay:Bitmap = new Bitmap (Assets.getBitmapData("img/pausescreen.png"));
 	
 	
 	function resize(e) 
@@ -76,12 +80,14 @@ class Main extends Sprite
 		
 	public function gamePause ()
 	{
-		gameMain.alpha = 0.3 ;
+		addChildAt(pauseOverlay,3);
+		//gameMain.alpha = 0.3 ;
 		pause = true ;
 	}
 	public function gameUnPause ()
 	{
-		gameMain.alpha = 1 ;
+		removeChild(pauseOverlay);
+		//gameMain.alpha = 1 ;
 		pause = false ;
 	}
 	
