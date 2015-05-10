@@ -41,7 +41,7 @@ class GameMain extends Sprite
 	
 	function createBooks ()
 	{
-		book1 = new Book("img/book.png", "img/book.png");
+		book1 = new Book("img/book.png");
 		book1.x = 1000;
 		book1.y = 40;
 		book1PosX = book1.x ;
@@ -78,12 +78,13 @@ class GameMain extends Sprite
 		
 		if (rect.contains(event.stageX, event.stageY))
 		{
-			
+			book1.openBook();
 		}
 		else
 		{
 			Actuate.tween (book1, 0.3, { x:book1PosX } );
 			Actuate.tween (book1, 0.3, { y:book1PosY } );
+			book1.closeBook();
 		}
 		
 	}
