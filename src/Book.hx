@@ -17,7 +17,7 @@ class Book extends StaticObject
 	{
 		super(image);
 	
-		openBookObj = new OpenBook("img/bookopen.png");
+		openBookObj = new OpenBook("img/bookopen.png",this);
 		
 		position();
 	}
