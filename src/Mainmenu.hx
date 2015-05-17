@@ -26,7 +26,7 @@ class Mainmenu extends Sprite
 		this.main = main;
 		createBackground();
 		createButtons();
-		playMusic();
+		//playMusic();
 
 	}
 	

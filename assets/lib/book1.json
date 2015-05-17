@@ -1,0 +1,16 @@
+{
+	"Entry1":
+	{
+		"bookentry":
+			{
+				"text": "This is an answer.",
+			}
+	},
+	"Entry2":
+	{
+		"bookentry":
+			{
+				"text": "This is another answer.",
+			}
+	}
+}

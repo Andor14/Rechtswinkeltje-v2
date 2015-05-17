@@ -12,6 +12,7 @@ import openfl.events.MouseEvent;
 class OpenBook extends StaticObject 
 {
 	var textField:TextField;
+	var textField2:TextField;
 	var bookTextFormat:TextFormat;
 	var closeButton:Button;
 	var book:Book;
@@ -21,7 +22,8 @@ class OpenBook extends StaticObject
 		super(image);
 		this.book = book;
 		addButton();
-		drawText();
+		//drawText();
+		fillbook();
 	}
 	
 	function addButton()
@@ -36,6 +38,28 @@ class OpenBook extends StaticObject
 	function clickButton(event:MouseEvent)
 	{
 		book.closeBook();
+	}
+	
+	function fillbook()
+	{
+		for (i in 0...6 )
+		{
+			var ypos: Int = 10 ;
+			var xpos: Int = 30 ;
+			
+			bookTextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
+			textField2 = new TextField();
+			textField2.defaultTextFormat = bookTextFormat;
+			textField2.x = xpos;
+			textField2.y = ypos;
+			textField2.width = 150 ;
+			textField2.height = 20 ;
+			textField2.text = "test";
+			addChild (textField2);
+			
+			ypos = ypos + 20 ;
+			
+		}
 	}
 	
 	function drawText()
