@@ -21,9 +21,17 @@ class OpenBook extends StaticObject
 	{
 		super(image);
 		this.book = book;
+		
+		bookInit();
 		addButton();
 		//drawText();
 		fillbook();
+		
+	}
+	
+	function bookInit ()
+	{
+		bookTextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
 	}
 	
 	function addButton()
@@ -47,7 +55,7 @@ class OpenBook extends StaticObject
 			var ypos: Int = 10 ;
 			var xpos: Int = 30 ;
 			
-			bookTextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
+			
 			textField2 = new TextField();
 			textField2.defaultTextFormat = bookTextFormat;
 			textField2.x = xpos;
@@ -64,7 +72,7 @@ class OpenBook extends StaticObject
 	
 	function drawText()
 	{
-		bookTextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
+		//bookTextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
 		textField = new TextField();
 		textField.defaultTextFormat = bookTextFormat;
 		textField.x = 30;
