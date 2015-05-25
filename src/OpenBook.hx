@@ -4,6 +4,8 @@ import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.text.TextFormatAlign;
 import openfl.events.MouseEvent;
+import openfl.Assets;
+import haxe.Json;
 
 /**
  * ...
@@ -16,6 +18,7 @@ class OpenBook extends StaticObject
 	var bookTextFormat:TextFormat;
 	var closeButton:Button;
 	var book:Book;
+	var jsonData:Dynamic;
 	
 	public function new(image:String,book:Book) 
 	{
@@ -25,7 +28,8 @@ class OpenBook extends StaticObject
 		bookInit();
 		addButton();
 		//drawText();
-		fillbook();
+		//fillbook();
+		fillbook2();
 		
 	}
 	
@@ -46,6 +50,22 @@ class OpenBook extends StaticObject
 	function clickButton(event:MouseEvent)
 	{
 		book.closeBook();
+	}
+	
+	function fillbook2()
+	{
+		var jsonin = Assets.getText("lib/book1.json");
+		jsonData = Json.parse(jsonin);
+		
+		trace (jsonData);
+		trace (jsonData.book1.length);
+		trace (jsonData.book1[0].Entry1.bookentry.text);
+		
+		for (i in 0...jsonData.book1.length)
+		{
+			trace (jsonData.book1[i].Entry1.bookentry.text) ;
+		}
+		
 	}
 	
 	function fillbook()

@@ -22,7 +22,7 @@ class Mainmenu extends Sprite
 	
 	public function new(main:Main) 
 	{
-		super();	
+		super();
 		this.main = main;
 		createBackground();
 		createButtons();

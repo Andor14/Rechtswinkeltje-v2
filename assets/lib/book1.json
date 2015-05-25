@@ -1,16 +1,32 @@
-{
-	"Entry1":
+{"book1":[
 	{
-		"bookentry":
-			{
-				"text": "This is an answer.",
-			}
-	},
-	"Entry2":
-	{
-		"bookentry":
-			{
-				"text": "This is another answer.",
-			}
+		"Entry1":
+		{
+			"bookentry":
+				{
+					"text": "This is an answer."
+				}
+		},
+		"Entry2":
+		{
+			"bookentry":
+				{
+					"text": "This is another answer."
+				}
+		},
+		"Entry3":
+		{
+			"bookentry":
+				{
+					"text": "This is another answer."
+				}
+		},
+		"Entry4":
+		{
+			"bookentry":
+				{
+					"text": "This is another answer."
+				}
+		}
 	}
-}
+]}
