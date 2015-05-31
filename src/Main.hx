@@ -50,7 +50,7 @@ class Main extends Sprite
 		addChild(mainMenu);
 	}
 	
-	private function toggleFullscreen() 
+	public function toggleFullscreen() 
 	{
 		if (Lib.current.stage.displayState != StageDisplayState.FULL_SCREEN_INTERACTIVE)
 		{

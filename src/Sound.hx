@@ -18,6 +18,7 @@ class Sound extends Sprite
 
 	var click = Assets.getSound("sound/Click.wav");
 	var beep = Assets.getSound("sound/Beep1.wav");
+	var start = Assets.getSound("sound/start.wav");
 	
 	var soundVolume: Float;
 	var channel:SoundChannel;
@@ -34,6 +35,8 @@ class Sound extends Sprite
 		{
 			case "click" :
 			channel = click.play( 0, 0, new SoundTransform(soundVolume ) );
+			case "start" :
+			channel = start.play( 0, 0, new SoundTransform(soundVolume ) );
 			default :
 			channel = beep.play( 0, 0, new SoundTransform(soundVolume ) );
 		}

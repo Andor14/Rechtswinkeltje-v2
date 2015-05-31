@@ -29,7 +29,7 @@ class OpenBook extends StaticObject
 		addButton();
 		//drawText();
 		//fillbook();
-		fillbook2();
+		//fillbook2();
 		
 	}
 	
@@ -58,14 +58,12 @@ class OpenBook extends StaticObject
 		jsonData = Json.parse(jsonin);
 		
 		trace (jsonData);
-		trace (jsonData.book1.length);
-		trace (jsonData.book1[0].Entry1.bookentry.text);
+		trace (jsonData.Entry1.text);
 		
-		for (i in 0...jsonData.book1.length)
+		for (i in 0...2)
 		{
-			trace (jsonData.book1[i].Entry1.bookentry.text) ;
+			
 		}
-		
 	}
 	
 	function fillbook()

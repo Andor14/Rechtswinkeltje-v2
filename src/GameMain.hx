@@ -19,6 +19,7 @@ class GameMain extends Sprite
 	var book1PosX:Float;
 	var book1PosY:Float;
 	var desk:StaticObject;
+	var cases:Array<Case> = new Array<Case>();
 	
 	public function new(main:Main) 
 	{
@@ -27,10 +28,9 @@ class GameMain extends Sprite
 		
 		createBackground();
 		createObjects();
-		createBooks();	
-	
+		createBooks();
+		createCases();
 	}
-	
 		
 		
 	function createBackground ()
@@ -38,6 +38,23 @@ class GameMain extends Sprite
 		var backGround:StaticObject = new StaticObject("img/background.png");
 		addChild(backGround);
 	}
+	
+	function createCases()
+	{
+		for (i in 0...3)
+		{
+			var aCase:Case = new Case();
+			aCase.caseName = "case 1";
+			aCase.caseText = "Test Case: Bla bla bla bla bla" ;
+			aCase.caseType = 0 ;
+			aCase.correctAnswer = 0 ;
+			
+			cases.push(aCase);
+ 		}
+		
+		trace (cases);
+	}
+	
 	
 	function createBooks ()
 	{
