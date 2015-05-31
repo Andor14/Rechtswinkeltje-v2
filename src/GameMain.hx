@@ -20,6 +20,7 @@ class GameMain extends Sprite
 	var book1PosY:Float;
 	var desk:StaticObject;
 	var cases:Array<Case> = new Array<Case>();
+	var clock:Clock;
 	
 	public function new(main:Main) 
 	{
@@ -30,9 +31,25 @@ class GameMain extends Sprite
 		createObjects();
 		createBooks();
 		createCases();
+		createClock();
+		
+		init();
 	}
 		
-		
+	
+	function init()
+	{
+		trace (main.gameStats.playerName);
+		clock.start();
+	}
+	
+	
+	public function endLvl()
+	{
+		clock.stop();
+		main.backToMain();
+	}
+	
 	function createBackground ()
 	{
 		var backGround:StaticObject = new StaticObject("img/background.png");
@@ -80,6 +97,14 @@ class GameMain extends Sprite
 		addChild(desk);
 	}
 	
+	function createClock ()
+	{
+		clock = new Clock(this);
+		clock.x = 600 ;
+		clock.y = 60 ;
+		addChild(clock);
+	}
+	
 	function startDraggingBook( event:MouseEvent ):Void
 	{
 		cast( event.currentTarget, Book ).startDrag( );
@@ -103,7 +128,11 @@ class GameMain extends Sprite
 			Actuate.tween (book1, 0.3, { y:book1PosY } );
 			book1.closeBook();
 		}
-		
+	}
+	
+	public function update()
+	{
+		clock.update();
 	}
 	
 }

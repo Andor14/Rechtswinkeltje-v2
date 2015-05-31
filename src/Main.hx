@@ -4,9 +4,9 @@ import flash.display.Sprite;
 import flash.events.Event;
 import openfl.Assets;
 import openfl.display.Bitmap;
-//import flash.Lib;
 import openfl.Lib;
 import openfl.display.StageDisplayState;
+import openfl.Lib.getTimer;
 
 
 
@@ -18,11 +18,13 @@ import openfl.display.StageDisplayState;
 class Main extends Sprite 
 {
 	var inited:Bool;
+	var lastTime:Int = 0;
 	var gameMain:GameMain;
 	var mainMenu:Mainmenu;
 	var gameUI:GameUI;
 	public var sound:Sound;
 	public var music:Music;
+	public var gameStats:GameStats = new GameStats();
 	var pause:Bool = false ;
 	var pauseOverlay:Bitmap = new Bitmap (Assets.getBitmapData("img/pausescreen.png"));
 	
@@ -37,6 +39,8 @@ class Main extends Sprite
 	{
 		if (inited) return;
 		inited = true;
+		
+		addEventListener( Event.ENTER_FRAME, onEnterFrame);
 		
 		//toggleFullscreen();
 		
@@ -117,4 +121,19 @@ class Main extends Sprite
 		Lib.current.stage.scaleMode = flash.display.StageScaleMode.NO_SCALE;
 		Lib.current.addChild(new Main());
 	}
+	
+	function onEnterFrame (event: Event)
+	{
+		var currentTime:Int = getTimer();
+		// time since last update
+		var elapsedTime:Float = (currentTime - lastTime)/1000 ;
+		
+		// update below this
+		
+		gameMain.update();
+		
+		// reset lasttime
+		lastTime = currentTime ;
+	}
+	
 }
