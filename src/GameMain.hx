@@ -19,6 +19,7 @@ class GameMain extends Sprite
 	var book1PosX:Float;
 	var book1PosY:Float;
 	var desk:StaticObject;
+	var screen:StaticObject;
 	var cases:Array<Case> = new Array<Case>();
 	var clock:Clock;
 	
@@ -97,6 +98,14 @@ class GameMain extends Sprite
 		desk.scaleX = 0.5 ;
 		desk.scaleY = 0.5 ;
 		addChild(desk);
+		
+		screen = new StaticObject ("img/pcscreen.png");
+		screen.x = 50;
+		screen.y = 50;
+		screen.scaleX = 0.5 ;
+		screen.scaleY = 0.5 ;
+		addChild(screen);
+		
 	}
 	
 	function createClock ()
