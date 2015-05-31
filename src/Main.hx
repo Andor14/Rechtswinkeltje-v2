@@ -8,8 +8,6 @@ import openfl.Lib;
 import openfl.display.StageDisplayState;
 import openfl.Lib.getTimer;
 
-
-
 /**
  * ...
  * @author Andor
@@ -40,6 +38,9 @@ class Main extends Sprite
 		if (inited) return;
 		inited = true;
 		
+		//this.onResize(new Event("resize"));
+		//this.stage.addEventListener(Event.RESIZE, this.onResize);
+		
 		addEventListener( Event.ENTER_FRAME, onEnterFrame);
 		
 		//toggleFullscreen();
@@ -54,11 +55,23 @@ class Main extends Sprite
 		addChild(mainMenu);
 	}
 	
+	/**
+	
+	public function onResize(event:Event) : Void {
+		
+			this.width = this.stage.stageWidth;
+			this.height = this.stage.stageHeight;
+			//this.scaleX = this.scaleY = 1;
+	}
+	
+	*/ 
+	
 	public function toggleFullscreen() 
 	{
 		if (Lib.current.stage.displayState != StageDisplayState.FULL_SCREEN_INTERACTIVE)
 		{
 			Lib.current.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+			
 		}
 		else 
 		{
