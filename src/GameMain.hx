@@ -22,6 +22,8 @@ class GameMain extends Sprite
 	var cases:Array<Case> = new Array<Case>();
 	var clock:Clock;
 	
+	var gamePause:Bool = false ;
+	
 	public function new(main:Main) 
 	{
 		super();	
@@ -107,8 +109,11 @@ class GameMain extends Sprite
 	
 	function startDraggingBook( event:MouseEvent ):Void
 	{
+		if (gamePause == false)
+		{
 		cast( event.currentTarget, Book ).startDrag( );
 		stage.addEventListener( MouseEvent.MOUSE_UP, releaseObjectBook );
+		}
 	}
 	
 	function releaseObjectBook( event:MouseEvent ):Void
@@ -130,9 +135,22 @@ class GameMain extends Sprite
 		}
 	}
 	
+	public function pauseGame()
+	{
+		gamePause = true ;
+	}
+	
+	public function unPauseGame()
+	{
+		gamePause = false ;
+	}
+	
 	public function update()
 	{
-		clock.update();
+		if (gamePause == false)
+		{
+			clock.update();
+		}
 	}
 	
 }

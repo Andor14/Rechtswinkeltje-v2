@@ -85,14 +85,14 @@ class Main extends Sprite
 	public function gamePause ()
 	{
 		addChildAt(pauseOverlay,3);
-		//gameMain.alpha = 0.3 ;
 		pause = true ;
+		gameMain.pauseGame();
 	}
 	public function gameUnPause ()
 	{
 		removeChild(pauseOverlay);
-		//gameMain.alpha = 1 ;
 		pause = false ;
+		gameMain.unPauseGame();
 	}
 	
 	/* SETUP */
