@@ -19,6 +19,8 @@ class Sound extends Sprite
 	var click = Assets.getSound("sound/Click.wav");
 	var beep = Assets.getSound("sound/Beep1.wav");
 	var start = Assets.getSound("sound/start.wav");
+	var boekOpen = Assets.getSound("sound/Boekopen.wav");
+	var boekScroll = Assets.getSound("sound/Boekscroll.wav");
 	
 	var soundVolume: Float;
 	var channel:SoundChannel;
@@ -37,6 +39,10 @@ class Sound extends Sprite
 			channel = click.play( 0, 0, new SoundTransform(soundVolume ) );
 			case "start" :
 			channel = start.play( 0, 0, new SoundTransform(soundVolume ) );
+			case "boekopen" :
+			channel = boekOpen.play( 0, 0, new SoundTransform(soundVolume ) );
+			case "boekscroll" :
+			channel = boekScroll.play( 0, 0, new SoundTransform(soundVolume ) );
 			default :
 			channel = beep.play( 0, 0, new SoundTransform(soundVolume ) );
 		}

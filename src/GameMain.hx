@@ -32,9 +32,9 @@ class GameMain extends Sprite
 		
 		createBackground();
 		createObjects();
+		createClock();
 		createBooks();
 		createCases();
-		createClock();
 		
 		init();
 	}
@@ -78,7 +78,7 @@ class GameMain extends Sprite
 	
 	function createBooks ()
 	{
-		book1 = new Book("img/book.png");
+		book1 = new Book("img/book.png",main);
 		book1.x = 1000;
 		book1.y = 40;
 		book1PosX = book1.x ;
@@ -93,10 +93,10 @@ class GameMain extends Sprite
 	function createObjects ()
 	{
 		desk = new StaticObject ("img/desk.png");
-		desk.x = 700;
-		desk.y = 450;
-		desk.scaleX = 0.5 ;
-		desk.scaleY = 0.5 ;
+		desk.x = ((main.stage.stageWidth) / 2) - (desk.width / 2);
+		desk.y = 300;
+		//desk.scaleX = 0.5 ;
+		//desk.scaleY = 0.5 ;
 		addChild(desk);
 		
 		screen = new StaticObject ("img/pcscreen.png");

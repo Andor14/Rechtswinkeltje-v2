@@ -27,10 +27,7 @@ class OpenBook extends StaticObject
 		
 		bookInit();
 		addButton();
-		//drawText();
-		//fillbook();
-		//fillbook2();
-		
+		fillbook();		
 	}
 	
 	function bookInit ()
@@ -52,53 +49,25 @@ class OpenBook extends StaticObject
 		book.closeBook();
 	}
 	
-	function fillbook2()
-	{
-		var jsonin = Assets.getText("lib/book1.json");
-		jsonData = Json.parse(jsonin);
-		
-		trace (jsonData);
-		trace (jsonData.Entry1.text);
-		
-		for (i in 0...2)
-		{
-			
-		}
-	}
-	
 	function fillbook()
 	{
-		for (i in 0...6 )
+		var ypos: Int = 10 ;
+		var xpos: Int = 30 ;
+		
+		for (i in 0...book.entrys.length)
 		{
-			var ypos: Int = 10 ;
-			var xpos: Int = 30 ;
+			var bookTxtField : TextField = new TextField ();
+			bookTxtField.defaultTextFormat = bookTextFormat;
 			
-			
-			textField2 = new TextField();
-			textField2.defaultTextFormat = bookTextFormat;
-			textField2.x = xpos;
-			textField2.y = ypos;
-			textField2.width = 150 ;
-			textField2.height = 20 ;
-			textField2.text = "test";
-			addChild (textField2);
+			bookTxtField.x = xpos;
+			bookTxtField.y = ypos;
+			bookTxtField.width = 150 ;
+			bookTxtField.height = 20 ;
+			bookTxtField.text = book.entrys[i].text;
+			addChild (bookTxtField);
 			
 			ypos = ypos + 20 ;
-			
 		}
-	}
-	
-	function drawText()
-	{
-		//bookTextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
-		textField = new TextField();
-		textField.defaultTextFormat = bookTextFormat;
-		textField.x = 30;
-		textField.y = 10;
-		textField.width = 150 ;
-		textField.height = 20 ;
-		textField.text = "Law and shit...";
-		addChild (textField);
 	}
 	
 }

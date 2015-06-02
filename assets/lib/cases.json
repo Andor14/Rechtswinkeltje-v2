@@ -1,0 +1,7 @@
+{
+	"cases": 
+	[
+		{"ID": 0 ,"text": "case 1, bla bla bla bla", "type": "email", "correct" : 0 },
+		{"ID": 1 ,"text": "case 2, bla bla bla bla", "type": "email", "correct" : 1 }
+	]
+}

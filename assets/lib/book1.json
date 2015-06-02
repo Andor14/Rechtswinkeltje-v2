@@ -1,9 +1,7 @@
-{"Entry1":
-	{
-	"text": "This is an answer."
-	},
-"Entry2":
-	{
-	"text": "This is another answer."
-	}
+{
+	"book1": 
+	[
+		{"ID": 0 , "text": "Answer bla bla bla bla"},
+		{"ID": 1 , "text": "Answer 2 bla bla bla bla"}
+	]
 }
