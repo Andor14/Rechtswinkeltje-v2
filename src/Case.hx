@@ -7,10 +7,10 @@ package ;
 class Case
 {
 
-	public var caseName : String = "Empty" ;
-	public var caseText : String = "Empty" ;
-	public var caseType : Int = 0 ;
-	public var correctAnswer : Int = 0;
+	public var caseID : Int ;
+	public var caseText : String ;
+	public var caseType : String ;
+	public var correctAnswer : Int ;
 	
 	public function new() 
 	{

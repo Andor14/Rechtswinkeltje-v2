@@ -6,6 +6,24 @@ import openfl.events.MouseEvent;
 import openfl.Lib;
 import motion.Actuate;
 import openfl.geom.Rectangle;
+import openfl.Assets;
+import haxe.Json;
+
+// define the type a answer 'is'
+typedef JSONCase = 
+{
+	var ID:Int;
+	var text:String;
+	var type:String;
+	var correct:Int;
+}
+
+// define the type the book1 'is'
+typedef JSONCases = 
+{
+  var cases:Array<GameMain.JSONCase>;
+}
+
 
 /**
  * ...
@@ -20,7 +38,7 @@ class GameMain extends Sprite
 	var book1PosY:Float;
 	var desk:StaticObject;
 	var screen:StaticObject;
-	var cases:Array<Case> = new Array<Case>();
+	var casesArray:Array<Case> = new Array<Case>();
 	var clock:Clock;
 	
 	var gamePause:Bool = false ;
@@ -46,7 +64,6 @@ class GameMain extends Sprite
 		clock.start();
 	}
 	
-	
 	public function endLvl()
 	{
 		clock.stop();
@@ -61,18 +78,21 @@ class GameMain extends Sprite
 	
 	function createCases()
 	{
-		for (i in 0...3)
+		var jsonString = Assets.getText("lib/cases.json");
+		var jsonObject:GameMain.JSONCases = Json.parse( jsonString );
+		var caseCount:Int = jsonObject.cases.length;
+		
+		for (i in 0...caseCount)
 		{
 			var aCase:Case = new Case();
-			aCase.caseName = "case 1";
-			aCase.caseText = "Test Case: Bla bla bla bla bla" ;
-			aCase.caseType = 0 ;
-			aCase.correctAnswer = 0 ;
+			aCase.caseID = jsonObject.cases[i].ID ;
+			aCase.caseText = jsonObject.cases[i].text ;
+			aCase.caseType = jsonObject.cases[i].type ;
+			aCase.correctAnswer = jsonObject.cases[i].correct ;
 			
-			cases.push(aCase);
+			casesArray.push(aCase);
  		}
 		
-		trace (cases);
 	}
 	
 	
