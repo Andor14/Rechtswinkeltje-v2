@@ -3,6 +3,7 @@ package ;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.text.TextFormatAlign;
+import openfl.text.TextLineMetrics;
 import openfl.events.MouseEvent;
 import openfl.Assets;
 import haxe.Json;
@@ -65,6 +66,9 @@ class OpenBook extends StaticObject
 			bookTxtField.height = 20 ;
 			bookTxtField.text = book.entrys[i].text;
 			addChild (bookTxtField);
+			
+			//var txtMetrics : TextLineMetrics = bookTxtField.getLineMetrics;
+			//trace (txtMetrics);
 			
 			ypos = ypos + 20 ;
 		}
