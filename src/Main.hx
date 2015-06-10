@@ -58,11 +58,11 @@ class Main extends Sprite
 		music = new Music();
 		addChild(music);
 		
-		//mainMenu = new Mainmenu(this);
-		//addChild(mainMenu);
+		addChild(mainMenu);
+		currentScreen = mainMenu ;
 		
-		addChild(advanceScreen);
-		currentScreen = advanceScreen ;
+		//addChild(advanceScreen);
+		//currentScreen = advanceScreen ;
 		
 		//music.mainMenuMusic();
 	}
