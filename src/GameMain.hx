@@ -1,7 +1,7 @@
 package;
 
-import flash.display.Sprite;
-import flash.events.Event;
+import openfl.display.Sprite;
+import openfl.events.Event;
 import openfl.events.MouseEvent;
 import openfl.Lib;
 import motion.Actuate;
@@ -37,6 +37,7 @@ class GameMain extends Sprite
 	var book1PosX:Float;
 	var book1PosY:Float;
 	var desk:StaticObject;
+	var bookcase:StaticObject;
 	var screen:StaticObject;
 	var casesArray:Array<Case> = new Array<Case>();
 	var clock:Clock;
@@ -60,14 +61,14 @@ class GameMain extends Sprite
 	
 	function init()
 	{
-		trace (main.gameStats.playerName);
+		//trace (main.gameStats.playerName);
 		clock.start();
 	}
 	
 	public function endLvl()
 	{
 		clock.stop();
-		main.backToMain();
+		main.openAdvanceScreen();
 	}
 	
 	function createBackground ()
@@ -99,12 +100,12 @@ class GameMain extends Sprite
 	function createBooks ()
 	{
 		book1 = new Book("img/book.png",main);
-		book1.x = 1000;
-		book1.y = 40;
+		book1.x = 915;
+		book1.y = 60;
 		book1PosX = book1.x ;
 		book1PosY = book1.y ;
-		book1.scaleX = 0.3 ;
-		book1.scaleY = 0.3 ;
+		book1.scaleX = 0.2 ;
+		book1.scaleY = 0.2 ;
 		addChild( book1 );
 		
 		book1.addEventListener( MouseEvent.MOUSE_DOWN, startDraggingBook );
@@ -112,18 +113,27 @@ class GameMain extends Sprite
 	
 	function createObjects ()
 	{
+		bookcase = new StaticObject ("img/bookcase.png");
+		bookcase.x = 900;
+		bookcase.y = 0;
+		bookcase.scaleX = 1 ;
+		bookcase.scaleY = 1 ;
+		addChild(bookcase);
+		
 		desk = new StaticObject ("img/desk.png");
-		desk.x = ((main.stage.stageWidth) / 2) - (desk.width / 2);
-		desk.y = 300;
-		//desk.scaleX = 0.5 ;
-		//desk.scaleY = 0.5 ;
+		//desk.x = ((main.stage.stageWidth) / 2) - (desk.width / 2);
+		//desk.y = 300;
+		desk.x = 0 ;
+		desk.y = 320 ;
+		desk.scaleX = 1 ;
+		desk.scaleY = 1 ;
 		addChild(desk);
 		
 		screen = new StaticObject ("img/pcscreen.png");
-		screen.x = 50;
-		screen.y = 50;
-		screen.scaleX = 0.5 ;
-		screen.scaleY = 0.5 ;
+		screen.x = 20;
+		screen.y = 20;
+		screen.scaleX = 1 ;
+		screen.scaleY = 1 ;
 		addChild(screen);
 		
 	}
@@ -131,8 +141,8 @@ class GameMain extends Sprite
 	function createClock ()
 	{
 		clock = new Clock(this);
-		clock.x = 600 ;
-		clock.y = 60 ;
+		clock.x = 550 + 85 ;
+		clock.y = 50 + 85 ;
 		addChild(clock);
 	}
 	

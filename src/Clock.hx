@@ -36,6 +36,12 @@ class Clock extends StaticObject
 		
 		arrow = new ClockArrow();
 		
+		//img.scaleX = 0.7 ;
+		//img.scaleY = 0.7 ;
+		
+		arrow.scaleX = 1.8 ;
+		arrow.scaleY = 1.8 ;
+		
 		img.x = img.x - (img.width / 2) ;
 		img.y = img.y - (img.height / 2) ;
 		

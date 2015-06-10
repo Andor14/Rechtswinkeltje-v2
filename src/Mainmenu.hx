@@ -7,12 +7,15 @@ import openfl.display.Sprite;
 import openfl.Assets;
 import openfl.events.MouseEvent;
 import openfl.events.KeyboardEvent;
-import flash.system.System;
+import openfl.system.System;
 
 import openfl.text.TextField;
 import openfl.text.TextFieldType;
 import openfl.text.TextFormat;
 import openfl.text.TextFormatAlign;
+
+import openfl.net.URLRequest;
+
 
 /**
  * ...
@@ -25,6 +28,7 @@ class Mainmenu extends Sprite
 	var startButton:Button = new Button("img/menu/button_spelen.png", "img/menu/button_spelen_hover.png");
 	var fullScreenButton:Button = new Button("img/menu/button_fullscreen_off.png", "img/menu/button_fullscreen_off_hover.png");
 	var fullScreenButton2:Button = new Button("img/menu/button_fullscreen_on.png", "img/menu/button_fullscreen_on_hover.png");
+	var contactButton:Button = new Button("img/menu/button_contact.png", "img/menu/button_contact_hover.png");
 	var exitButton:Button = new Button("img/Exit.png", "img/Exit2.png");	
 	
 	var inputText:TextField;
@@ -38,8 +42,7 @@ class Mainmenu extends Sprite
 		createBackground();
 		createButtons();
 		createNameField();
-		//playMusic();
-
+		
 	}
 	
 		function createBackground ()
@@ -90,7 +93,7 @@ class Mainmenu extends Sprite
 		startButton.scaleX = 0.5 ;
 		startButton.scaleY = 0.5 ;
 		startButton.x = ((main.stage.stageWidth) / 2) - (startButton.width / 2);
-		startButton.y = ((main.stage.stageHeight) / 2) - (startButton.height / 2) - 70;
+		startButton.y = ((main.stage.stageHeight) / 2) - (startButton.height / 2) - 100;
 		startButton.addEventListener( MouseEvent.CLICK, onClick );
 		addChild( startButton );
 		
@@ -113,6 +116,13 @@ class Mainmenu extends Sprite
 		fullScreenButton2.x = ((main.stage.stageWidth) / 2) - (fullScreenButton2.width / 2);
 		fullScreenButton2.y = ((main.stage.stageHeight) / 2) - (fullScreenButton2.height / 2) + 100;
 		fullScreenButton2.addEventListener( MouseEvent.CLICK, fullScreenOff );
+		
+		contactButton.scaleX = 0.5 ;
+		contactButton.scaleY = 0.5 ;
+		contactButton.x = ((main.stage.stageWidth) / 2) - (fullScreenButton2.width / 2);
+		contactButton.y = ((main.stage.stageHeight) / 2) - (fullScreenButton2.height / 2);
+		contactButton.addEventListener( MouseEvent.CLICK, contact );
+		addChild( contactButton );
 		
 	}
 		function onClick( event:MouseEvent)
@@ -150,9 +160,10 @@ class Mainmenu extends Sprite
 		main.toggleFullscreen();
 	}
 	
-	function playMusic()
+	function contact( event:MouseEvent)
 	{
-		main.music.mainMenuMusic();
+		main.sound.playSound("click");
+		Lib.getURL (new URLRequest ("http://noord.kjrw.nl/contact/"));
 	}
 	
 }

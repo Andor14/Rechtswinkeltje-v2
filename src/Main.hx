@@ -20,6 +20,7 @@ class Main extends Sprite
 	var gameMain:GameMain;
 	var mainMenu:Mainmenu;
 	var gameUI:GameUI;
+	var advanceScreen:Advancementscreen;
 	public var sound:Sound;
 	public var music:Music;
 	public var gameStats:GameStats = new GameStats();
@@ -45,6 +46,10 @@ class Main extends Sprite
 		
 		//toggleFullscreen();
 		
+		mainMenu = new Mainmenu(this);
+		advanceScreen = new Advancementscreen(this);
+		
+		
 		sound = new Sound();
 		addChild(sound);
 		
@@ -53,6 +58,9 @@ class Main extends Sprite
 		
 		mainMenu = new Mainmenu(this);
 		addChild(mainMenu);
+		
+		
+		//music.mainMenuMusic();
 	}
 	
 	/**
@@ -86,6 +94,13 @@ class Main extends Sprite
 		addChild(gameMain) ;
 		gameUI = new GameUI(this);
 		addChild(gameUI);
+	}
+	
+	public function openAdvanceScreen()
+	{
+		removeChild (gameMain);
+		removeChild (gameUI);
+		addChild (advanceScreen);
 	}
 	
 	public function backToMain()

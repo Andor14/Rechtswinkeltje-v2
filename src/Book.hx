@@ -47,8 +47,8 @@ class Book extends StaticObject
 		openBookObj.x = openBookObj.x - (openBookObj.width/2);
 		openBookObj.y = openBookObj.y - (openBookObj.height/2);
 		
-		openBookObj.scaleX = 3 ;
-		openBookObj.scaleY = 3 ;
+		openBookObj.scaleX = 5 ;
+		openBookObj.scaleY = 5 ;
 	}
 	
 	function createEntrys()
@@ -67,7 +67,7 @@ class Book extends StaticObject
 			entry.text = jsonObject.book1[i].text ;
 			entrys.push(entry);
 			
-			trace (entrys[i].text);
+			//trace (entrys[i].text);
 		}
 	}
 	
@@ -80,5 +80,6 @@ class Book extends StaticObject
 	public function closeBook ()
 	{
 		removeChild (openBookObj);
+		main.sound.playSound("boekdicht");
 	}
 }

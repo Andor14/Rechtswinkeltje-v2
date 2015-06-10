@@ -21,6 +21,7 @@ class Sound extends Sprite
 	var start = Assets.getSound("sound/start.wav");
 	var boekOpen = Assets.getSound("sound/Boekopen.wav");
 	var boekScroll = Assets.getSound("sound/Boekscroll.wav");
+	var boekDicht = Assets.getSound("sound/Boekdicht.wav");
 	
 	var soundVolume: Float;
 	var channel:SoundChannel;
@@ -43,6 +44,8 @@ class Sound extends Sprite
 			channel = boekOpen.play( 0, 0, new SoundTransform(soundVolume ) );
 			case "boekscroll" :
 			channel = boekScroll.play( 0, 0, new SoundTransform(soundVolume ) );
+			case "boekdicht" :
+			channel = boekDicht.play( 0, 0, new SoundTransform(soundVolume ) );
 			default :
 			channel = beep.play( 0, 0, new SoundTransform(soundVolume ) );
 		}
