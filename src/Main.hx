@@ -18,14 +18,16 @@ class Main extends Sprite
 	var inited:Bool;
 	var lastTime:Int = 0;
 	var gameMain:GameMain;
-	var mainMenu:Mainmenu;
 	var gameUI:GameUI;
+	var mainMenu:Mainmenu;
 	var advanceScreen:Advancementscreen;
 	public var sound:Sound;
 	public var music:Music;
 	public var gameStats:GameStats = new GameStats();
 	var pause:Bool = false ;
 	var pauseOverlay:Bitmap = new Bitmap (Assets.getBitmapData("img/pausescreen.png"));
+	
+	var currentScreen : Dynamic ;
 	
 	
 	function resize(e) 
@@ -48,7 +50,7 @@ class Main extends Sprite
 		
 		mainMenu = new Mainmenu(this);
 		advanceScreen = new Advancementscreen(this);
-		
+		gameUI = new GameUI(this);
 		
 		sound = new Sound();
 		addChild(sound);
@@ -56,9 +58,11 @@ class Main extends Sprite
 		music = new Music();
 		addChild(music);
 		
-		mainMenu = new Mainmenu(this);
-		addChild(mainMenu);
+		//mainMenu = new Mainmenu(this);
+		//addChild(mainMenu);
 		
+		addChild(advanceScreen);
+		currentScreen = advanceScreen ;
 		
 		//music.mainMenuMusic();
 	}
@@ -87,6 +91,61 @@ class Main extends Sprite
 		}
 	}
 
+	
+	public function startGame():Void
+	{
+		if (currentScreen == gameMain)
+		{
+		removeChild (currentScreen) ;
+		removeChild (gameUI);
+		}
+		else 
+		{
+		removeChild (currentScreen) ;
+		}
+		
+		gameMain = new GameMain (this);
+		addChild (gameMain);
+		addChild(gameUI);
+		currentScreen = gameMain;
+	}
+	
+	public function openAdvanceScreen()
+	{
+		if (currentScreen == gameMain)
+		{
+		removeChild (currentScreen) ;
+		removeChild (gameUI);
+		}
+		else 
+		{
+		removeChild (currentScreen) ;
+		}
+		
+		addChild (advanceScreen);
+		currentScreen = advanceScreen ;
+		
+	}
+	
+	public function backToMain()
+	{
+		if (currentScreen == gameMain)
+		{
+		removeChild (currentScreen) ;
+		removeChild (gameUI);
+		}
+		else 
+		{
+		removeChild (currentScreen) ;
+		}
+		
+		addChild (mainMenu);
+		currentScreen = mainMenu ;
+	}
+	
+	
+	/**
+	
 	public function startGame():Void
 	{
 		removeChild (mainMenu) ;
@@ -110,6 +169,8 @@ class Main extends Sprite
 		addChild (mainMenu);
 	}
 		
+	*/
+	
 	public function gamePause ()
 	{
 		addChildAt(pauseOverlay,3);

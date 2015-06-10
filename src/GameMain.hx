@@ -33,6 +33,7 @@ class GameMain extends Sprite
 {
 	
 	var main:Main;
+	
 	var book1:Book;
 	var book1PosX:Float;
 	var book1PosY:Float;
@@ -49,6 +50,8 @@ class GameMain extends Sprite
 		super();	
 		this.main = main;
 		
+		
+		
 		createBackground();
 		createObjects();
 		createClock();
@@ -57,7 +60,6 @@ class GameMain extends Sprite
 		
 		init();
 	}
-		
 	
 	function init()
 	{
