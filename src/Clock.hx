@@ -84,7 +84,7 @@ class Clock extends StaticObject
 	
 	function done()
 	{
-		trace ("lvl is over.");
+		//trace ("lvl is over.");
 		gameMain.endLvl();
 	}
 	

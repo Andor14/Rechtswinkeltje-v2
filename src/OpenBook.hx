@@ -67,8 +67,9 @@ class OpenBook extends StaticObject
 			bookTxtField.text = book.entrys[i].text;
 			addChild (bookTxtField);
 			
-			//var txtMetrics : TextLineMetrics = bookTxtField.getLineMetrics;
-			//trace (txtMetrics);
+			//var txtMetrics : TextLineMetrics = bookTxtField.measurete;
+			
+			//trace (txtMetrics.width);
 			
 			ypos = ypos + 20 ;
 		}
