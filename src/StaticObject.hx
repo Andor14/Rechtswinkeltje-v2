@@ -9,7 +9,7 @@ import openfl.Assets;
  */
 class StaticObject extends Sprite 
 {
-
+	
 	var img:Bitmap;
 	
 	public function new(image:String) 

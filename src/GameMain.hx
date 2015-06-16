@@ -39,8 +39,8 @@ class GameMain extends Sprite
 	var book1PosY:Float;
 	var desk:StaticObject;
 	var bookcase:StaticObject;
-	var screen:StaticObject;
-	var casesArray:Array<Case> = new Array<Case>();
+	var screen:PCScreen;
+	public var casesArray:Array<Case> = new Array<Case>();
 	var clock:Clock;
 	
 	var gamePause:Bool = false ;
@@ -131,7 +131,7 @@ class GameMain extends Sprite
 		desk.scaleY = 1 ;
 		addChild(desk);
 		
-		screen = new StaticObject ("img/pcscreen.png");
+		screen = new PCScreen ("img/pcscreen.png");
 		screen.x = 20;
 		screen.y = 20;
 		screen.scaleX = 1 ;
@@ -191,6 +191,7 @@ class GameMain extends Sprite
 		if (gamePause == false)
 		{
 			clock.update();
+			screen.update();
 		}
 	}
 	

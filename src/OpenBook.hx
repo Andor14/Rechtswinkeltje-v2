@@ -63,15 +63,22 @@ class OpenBook extends StaticObject
 			bookTxtField.x = xpos;
 			bookTxtField.y = ypos;
 			bookTxtField.width = 150 ;
-			bookTxtField.height = 20 ;
+			bookTxtField.height = 50 ;
 			bookTxtField.text = book.entrys[i].text;
 			addChild (bookTxtField);
 			
-			//var txtMetrics : TextLineMetrics = bookTxtField.measurete;
+			var txtMetrics : TextLineMetrics = bookTxtField.getLineMetrics(0);
 			
-			//trace (txtMetrics.width);
+			trace (txtMetrics.width);
+			trace (txtMetrics.height);
 			
-			ypos = ypos + 20 ;
+			if (txtMetrics.width > bookTxtField.width)
+			{
+				trace ("yes");
+			}
+			
+			
+			ypos = ypos + Std.int(txtMetrics.height) + 5 ;
 		}
 	}
 	
