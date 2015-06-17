@@ -96,12 +96,10 @@ class OpenBook extends StaticObject
 	function mouseOverAnswer(event:MouseEvent)
 	{
 		book.overAnswer = true ;
-		trace (book.overAnswer);
 	}
 	
 		function mouseOutAnswer(event:MouseEvent)
 	{
 		book.overAnswer = false ;
-		trace (book.overAnswer);
 	}
 }

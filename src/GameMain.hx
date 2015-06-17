@@ -208,22 +208,15 @@ class GameMain extends Sprite
 		dragAnswer.x = Std.int(mouseX) - (inputObj.width/2) ;
 		dragAnswer.y = Std.int(mouseY) - 10 ;
 		addChild (dragAnswer);
-		dragAnswer.addEventListener( MouseEvent.MOUSE_DOWN, startDragAnswer );
 		
-	}
-	function startDragAnswer ( event:MouseEvent)
-	{
-		tempDragAnswer = event.currentTarget ;
-		event.currentTarget.startDrag();
+		tempDragAnswer = dragAnswer ;
+		dragAnswer.startDrag();
 		stage.addEventListener( MouseEvent.MOUSE_UP, releaseDragAnswer );
 	}
+	
 	function releaseDragAnswer (event:MouseEvent)
 	{
 		removeChild(tempDragAnswer);
-		
-		stage.removeEventListener( MouseEvent.MOUSE_UP, releaseDragAnswer );
-		stopDrag();
-		
 	}
 	
 }
