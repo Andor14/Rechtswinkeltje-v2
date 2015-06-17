@@ -87,7 +87,7 @@ class Book extends StaticObject
 		main.sound.playSound("boekdicht");
 	}
 	
-	public function dragAnswer (inputObj:TextField)
+	public function dragAnswer (inputObj:BookTextField)
 	{
 		
 		game.dragAnswer(inputObj);

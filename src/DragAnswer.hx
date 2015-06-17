@@ -13,11 +13,13 @@ class DragAnswer extends Sprite
 {
 
 	var text : String ;
+	var id : Int ;
 	
-	public function new(inputText:String) 
+	public function new(inputText:String,inputId:Int) 
 	{
 		super();
 		text = inputText ;
+		id = inputId ;
 		
 		displayText();
 		fadeIn();
@@ -52,4 +54,8 @@ class DragAnswer extends Sprite
 		Actuate.tween (this, 0.6, { alpha:1.0 } );
 	}
 	
+	public function getID ():Int
+	{
+		return id ;
+	}
 }

@@ -58,7 +58,7 @@ class OpenBook extends StaticObject
 		
 		for (i in 0...book.entrys.length)
 		{
-			var bookTxtField : TextField = new TextField ();
+			var bookTxtField : BookTextField = new BookTextField ();
 			bookTxtField.defaultTextFormat = bookTextFormat;
 			
 			bookTxtField.x = xpos;
@@ -69,6 +69,7 @@ class OpenBook extends StaticObject
 			bookTxtField.wordWrap = true ;
 			bookTxtField.selectable = false ;
 			bookTxtField.text = book.entrys[i].text;
+			bookTxtField.ID = book.entrys[i].ID;
 			addChild (bookTxtField);
 			
 			trace (bookTxtField.numLines);
