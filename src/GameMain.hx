@@ -204,14 +204,17 @@ class GameMain extends Sprite
 	
 	public function dragAnswer (inputObj:BookTextField)
 	{
-		var dragAnswer : DragAnswer = new DragAnswer (inputObj.text,inputObj.ID) ;
-		dragAnswer.x = Std.int(mouseX) - (inputObj.width/2) ;
-		dragAnswer.y = Std.int(mouseY) - 10 ;
-		addChild (dragAnswer);
-		
-		tempDragAnswer = dragAnswer ;
-		dragAnswer.startDrag();
-		stage.addEventListener( MouseEvent.MOUSE_UP, releaseDragAnswer );
+		if (gamePause == false)
+		{
+			var dragAnswer : DragAnswer = new DragAnswer (inputObj.text,inputObj.ID) ;
+			dragAnswer.x = Std.int(mouseX) - (inputObj.width/2) ;
+			dragAnswer.y = Std.int(mouseY) - 10 ;
+			addChild (dragAnswer);
+			
+			tempDragAnswer = dragAnswer ;
+			dragAnswer.startDrag();
+			stage.addEventListener( MouseEvent.MOUSE_UP, releaseDragAnswer );
+		}
 	}
 	
 	function releaseDragAnswer (event:MouseEvent)

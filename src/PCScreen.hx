@@ -1,5 +1,10 @@
 package ;
 
+import motion.Actuate;
+import openfl.text.TextField;
+import openfl.text.TextFormat;
+import openfl.text.TextFormatAlign;
+
 /**
  * ...
  * @author Andor
@@ -12,6 +17,9 @@ class PCScreen extends StaticObject
 	var caseSelected : Bool = false ;
 	var currentCase : Int ;
 	var timer:Timer ;
+	
+	var textx : Int = 50 ;
+	var texty : Int = 50 ;
 	
 	public function new(image:String,gameMain:GameMain,main:Main) 
 	{
@@ -41,6 +49,7 @@ class PCScreen extends StaticObject
 	{
 		trace ("New case");
 		selectCase();
+		displayText();
 		main.sound.playSound("incoming");
 		
 		popup = new StaticObject ("img/bookcase.png");
@@ -53,12 +62,27 @@ class PCScreen extends StaticObject
 	function selectCase ()
 	{
 		currentCase = Std.random(game.casesArray.length);
-		trace(game.casesArray[Std.random(game.casesArray.length)].caseText);
+		//trace(game.casesArray[currentCase].caseText);
 	}
 	
 	function displayText ()
 	{
+		var textFormat: TextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
+		var txtField : TextField = new TextField ();
+		txtField.defaultTextFormat = textFormat;	
 		
+		txtField.x = textx;
+		txtField.y = texty;
+		txtField.width = 160 ;
+		txtField.height = 50 ;
+		txtField.multiline = true ;
+		txtField.wordWrap = true ;
+		txtField.selectable = false ;
+		txtField.text = game.casesArray[currentCase].caseText;
+		txtField.alpha = 0 ;
+		addChild (txtField);
+		
+		Actuate.tween (txtField, 1.0 , { alpha:1 } );
 	}
 	
 	public function update ()
