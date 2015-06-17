@@ -6,14 +6,20 @@ package ;
  */
 class PCScreen extends StaticObject
 {
-
+	var game:GameMain ;
+	var main:Main ;
+	var popup:StaticObject ;
 	var caseSelected : Bool = false ;
+	var currentCase : Int ;
 	var timer:Timer ;
 	
-	public function new(image:String) 
+	public function new(image:String,gameMain:GameMain,main:Main) 
 	{
 		super(image);
+		this.game = gameMain ;
+		this.main = main ;
 		init();
+		setCountdown();
 	}
 	
 	function init()
@@ -23,7 +29,7 @@ class PCScreen extends StaticObject
 	
 	function setCountdown ()
 	{
-		timer.setTime(3000);
+		timer.setTime(100);
 		
 		trace ("time set");
 		
@@ -34,6 +40,25 @@ class PCScreen extends StaticObject
 	function openCase ()
 	{
 		trace ("New case");
+		selectCase();
+		main.sound.playSound("incoming");
+		
+		popup = new StaticObject ("img/bookcase.png");
+		popup.x = 900;
+		popup.y = 0;
+		//addChild(popup);
+		
+	}
+	
+	function selectCase ()
+	{
+		currentCase = Std.random(game.casesArray.length);
+		trace(game.casesArray[Std.random(game.casesArray.length)].caseText);
+	}
+	
+	function displayText ()
+	{
+		
 	}
 	
 	public function update ()

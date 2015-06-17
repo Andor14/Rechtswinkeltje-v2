@@ -135,7 +135,7 @@ class GameMain extends Sprite
 		desk.scaleY = 1 ;
 		addChild(desk);
 		
-		screen = new PCScreen ("img/pcscreen.png");
+		screen = new PCScreen ("img/pcscreen.png",this,main);
 		screen.x = 20;
 		screen.y = 20;
 		screen.scaleX = 1 ;

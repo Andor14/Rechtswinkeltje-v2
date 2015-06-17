@@ -40,6 +40,8 @@ class Sound extends Sprite
 			channel = click.play( 0, 0, new SoundTransform(soundVolume ) );
 			case "start" :
 			channel = start.play( 0, 0, new SoundTransform(soundVolume ) );
+			case "incoming" :
+			channel = start.play( 0, 0, new SoundTransform(soundVolume ) );
 			case "boekopen" :
 			channel = boekOpen.play( 0, 0, new SoundTransform(soundVolume ) );
 			case "boekscroll" :
