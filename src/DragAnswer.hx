@@ -20,6 +20,7 @@ class DragAnswer extends Sprite
 		text = inputText ;
 		
 		displayText();
+		fadeIn();
 	}
 	
 	
@@ -35,13 +36,20 @@ class DragAnswer extends Sprite
 		txtField.wordWrap = true ;
 		txtField.selectable = false ;
 		txtField.text = text;
+		
+		txtField.background = true;
+		txtField.backgroundColor = 0xFFFFFF;
+		txtField.border = true ;
+		txtField.borderColor = 0x000000 ;
+		
 		addChild (txtField);
 			
 	}
 	
 	function fadeIn ()
 	{
-		
+		this.alpha = 0 ;
+		Actuate.tween (this, 0.6, { alpha:1.0 } );
 	}
 	
 }

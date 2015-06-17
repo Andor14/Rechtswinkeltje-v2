@@ -34,6 +34,8 @@ class Advancementscreen extends Sprite
 		playerName = main.gameStats.playerName ;
 		score = main.gameStats.score ;
 		
+		trace (main.gameStats.playerName);
+		
 		createBackground();
 		createButtons();
 		showstats();

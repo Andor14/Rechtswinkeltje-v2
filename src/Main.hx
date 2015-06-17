@@ -49,8 +49,6 @@ class Main extends Sprite
 		//toggleFullscreen();
 		
 		mainMenu = new Mainmenu(this);
-		advanceScreen = new Advancementscreen(this);
-		gameUI = new GameUI(this);
 		
 		sound = new Sound();
 		addChild(sound);
@@ -106,6 +104,7 @@ class Main extends Sprite
 		
 		gameMain = new GameMain (this);
 		addChild (gameMain);
+		gameUI = new GameUI(this);
 		addChild(gameUI);
 		currentScreen = gameMain;
 	}
@@ -122,6 +121,7 @@ class Main extends Sprite
 		removeChild (currentScreen) ;
 		}
 		
+		advanceScreen = new Advancementscreen(this);
 		addChild (advanceScreen);
 		currentScreen = advanceScreen ;
 		

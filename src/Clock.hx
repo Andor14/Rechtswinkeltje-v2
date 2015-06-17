@@ -29,7 +29,8 @@ class Clock extends StaticObject
 	function init()
 	{
 		//timeLimit = 300000 ;
-		timeLimit = 3000 ;
+		//timeLimit = 3000 ;
+		timeLimit = 200 ;
 
 		anglePerTime = 360 / timeLimit ;
 		

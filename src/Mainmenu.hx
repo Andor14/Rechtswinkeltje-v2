@@ -133,13 +133,13 @@ class Mainmenu extends Sprite
 		main.sound.playSound("start");
 		
 		updateName();
-		main.gameStats.playerName = playerName ;
 		main.startGame();
 	}
 	
 		function updateName()
-	{
+	{ 
 		playerName = Std.string (inputText.text);
+		main.gameStats.playerName = playerName ;
 	}
 	
 		function onClickExit( event:MouseEvent)
