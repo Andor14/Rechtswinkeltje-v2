@@ -8,6 +8,7 @@ import motion.Actuate;
 import openfl.geom.Rectangle;
 import openfl.Assets;
 import haxe.Json;
+import openfl.text.TextField;
 
 // define the type a answer 'is'
 typedef JSONCase = 
@@ -44,6 +45,9 @@ class GameMain extends Sprite
 	var clock:Clock;
 	
 	var gamePause:Bool = false ;
+	
+	var tempDragAnswer : DragAnswer ;
+	
 	
 	public function new(main:Main) 
 	{
@@ -101,7 +105,7 @@ class GameMain extends Sprite
 	
 	function createBooks ()
 	{
-		book1 = new Book("img/book.png",main);
+		book1 = new Book("img/book.png",main,this);
 		book1.x = 915;
 		book1.y = 60;
 		book1PosX = book1.x ;
@@ -152,8 +156,11 @@ class GameMain extends Sprite
 	{
 		if (gamePause == false)
 		{
-		cast( event.currentTarget, Book ).startDrag( );
-		stage.addEventListener( MouseEvent.MOUSE_UP, releaseObjectBook );
+			if (event.currentTarget.overAnswer == false)
+			{
+				cast( event.currentTarget, Book ).startDrag( );
+				stage.addEventListener( MouseEvent.MOUSE_UP, releaseObjectBook );
+			}
 		}
 	}
 	
@@ -193,6 +200,30 @@ class GameMain extends Sprite
 			clock.update();
 			screen.update();
 		}
+	}
+	
+	public function dragAnswer (inputObj:TextField)
+	{
+		var dragAnswer : DragAnswer = new DragAnswer (inputObj.text) ;
+		dragAnswer.x = Std.int(mouseX) - (inputObj.width/2) ;
+		dragAnswer.y = Std.int(mouseY) - 10 ;
+		addChild (dragAnswer);
+		dragAnswer.addEventListener( MouseEvent.MOUSE_DOWN, startDragAnswer );
+		
+	}
+	function startDragAnswer ( event:MouseEvent)
+	{
+		tempDragAnswer = event.currentTarget ;
+		event.currentTarget.startDrag();
+		stage.addEventListener( MouseEvent.MOUSE_UP, releaseDragAnswer );
+	}
+	function releaseDragAnswer (event:MouseEvent)
+	{
+		removeChild(tempDragAnswer);
+		
+		stage.removeEventListener( MouseEvent.MOUSE_UP, releaseDragAnswer );
+		stopDrag();
+		
 	}
 	
 }

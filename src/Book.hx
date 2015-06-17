@@ -5,6 +5,7 @@ import openfl.display.Bitmap;
 import openfl.display.Sprite;
 import openfl.Assets;
 import openfl.events.MouseEvent;
+import openfl.text.TextField;
 
 // define the type a answer 'is'
 typedef JSONAnswer = 
@@ -27,13 +28,16 @@ class Book extends StaticObject
 {	
 	var openBookObj:OpenBook;
 	var main:Main;
+	var game:GameMain;
 	public var entrys:Array<Answer> = new Array<Answer>();
+	public var overAnswer:Bool = false ;
 	
-	public function new(image:String,main:Main) 
+	public function new(image:String,main:Main,gameMain:GameMain) 
 	{
 		super(image);
 		this.main = main;
-	
+		this.game = gameMain;
+		
 		createEntrys();
 		openBookObj = new OpenBook("img/bookopen.png",this);
 		position();
@@ -81,5 +85,11 @@ class Book extends StaticObject
 	{
 		removeChild (openBookObj);
 		main.sound.playSound("boekdicht");
+	}
+	
+	public function dragAnswer (inputObj:TextField)
+	{
+		
+		game.dragAnswer(inputObj);
 	}
 }
