@@ -76,13 +76,16 @@ class Mainmenu extends Sprite
 		inputText.backgroundColor = 0xFFFFFF;
 		//inputText.border = true ;
 		inputText.borderColor = 0x000000 ;
-		inputText.width = 250 ;
-		inputText.height = 30 ;
+		inputText.width = 150 ;
+		inputText.height = 130 ;
 		//inputText.x = ((main.stage.stageWidth) / 2) - (inputText.width / 2);
-		inputText.x = 220;
+		inputText.x = 270;
 		inputText.y = 200;
 		inputText.type = TextFieldType.INPUT;	
 		inputText.text = "Naam" ;
+		inputText.multiline = true ;
+		inputText.wordWrap = true ;
+		
 		
 		addChild(inputText);
 	}

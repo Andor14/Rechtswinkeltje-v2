@@ -29,6 +29,7 @@ class OpenBook extends StaticObject
 		bookInit();
 		addButton();
 		fillbook();		
+		
 	}
 	
 	function bookInit ()
@@ -62,24 +63,45 @@ class OpenBook extends StaticObject
 			
 			bookTxtField.x = xpos;
 			bookTxtField.y = ypos;
-			bookTxtField.width = 150 ;
+			bookTxtField.width = 160 ;
 			bookTxtField.height = 50 ;
+			bookTxtField.multiline = true ;
+			bookTxtField.wordWrap = true ;
+			bookTxtField.selectable = false ;
 			bookTxtField.text = book.entrys[i].text;
 			addChild (bookTxtField);
 			
-			var txtMetrics : TextLineMetrics = bookTxtField.getLineMetrics(0);
+			trace (bookTxtField.numLines);
 			
-			trace (txtMetrics.width);
-			trace (txtMetrics.height);
+			var txtMetrics : TextLineMetrics = bookTxtField.getLineMetrics(bookTxtField.numLines -1);
 			
-			if (txtMetrics.width > bookTxtField.width)
-			{
-				trace ("yes");
-			}
+			//trace (txtMetrics.width);
+			//trace (txtMetrics.height);
 			
-			
-			ypos = ypos + Std.int(txtMetrics.height) + 5 ;
+			bookTxtField.addEventListener( MouseEvent.MOUSE_DOWN, clickAnswer );
+			bookTxtField.addEventListener(MouseEvent.MOUSE_OVER,mouseOverAnswer);
+			bookTxtField.addEventListener(MouseEvent.MOUSE_OUT,mouseOutAnswer);
+				
+			ypos = ypos + Std.int(txtMetrics.height) + 50 ;
 		}
 	}
 	
+	
+	function clickAnswer (event:MouseEvent)
+	{
+		trace (event.currentTarget.text);
+		book.dragAnswer(event.currentTarget);
+	}
+	
+	function mouseOverAnswer(event:MouseEvent)
+	{
+		book.overAnswer = true ;
+		trace (book.overAnswer);
+	}
+	
+		function mouseOutAnswer(event:MouseEvent)
+	{
+		book.overAnswer = false ;
+		trace (book.overAnswer);
+	}
 }
