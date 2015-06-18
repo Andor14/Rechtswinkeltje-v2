@@ -256,7 +256,6 @@ class GameMain extends Sprite
 			
 		}
 		
-		trace (tempDragAnswer.getID());
 		removeChild(tempDragAnswer);
 		stage.removeEventListener( MouseEvent.MOUSE_UP, releaseDragAnswer );
 		

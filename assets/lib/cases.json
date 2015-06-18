@@ -1,7 +1,13 @@
 {
 	"cases": 
 	[
-		{"ID": 0 ,"text": "case 1, bla bla bla bla", "type": "email", "correct" : 0 },
-		{"ID": 1 ,"text": "case 2, bla bla bla bla", "type": "email", "correct" : 1 }
+		{"ID": 0 ,"text": "case 1, Hoi …. Ik zit met een probleem, ik heb gespijbelt! School drijgt er mee om de leerplichtambtenaar te in te schakelen en ik weet niet hoe ik het moet oplossen. Ik vraag me af wat me te wachten staat en of ik er wat aan kan doen. Ik hoop dat jullie mij wat informatie kunnen geven. Groetjes, Sabina. ", "type": "email", "correct" : 0 },
+		{"ID": 1 ,"text": "case 2, Hoi ….. Mijn naam is bas en ik heb examen fraude gepleegd, ik heb met een klasgenoot de antwoorden gestolen uit de leraren kamer en deze gebruikt voor het examen. De leraren zijn er achter gekomen, ik dacht dat ik het slim had gedaan maar ik ben de sjaak, zouden jullie mij kunnen vertellen wat mij te wachten staat en hoe ik er mee om kan gaan? Groetjes, Bas.    ", "type": "email", "correct" : 1 },
+		{"ID": 2 ,"text": "case 3, Hallo! Mijn naam is Kim, en ik word gepest via het internet, ik word veelal belachelijk gemaakt met kwetsende plaatjes waar ik op sta, ik durf niet meer op school te komen en ik durf al helemaal niet er voor uit te komen tegen de leraren, wat moet ik doen!!!!!  ", "type": "email", "correct" : 2 },
+		{"ID": 3 ,"text": "case 4, Hallo! Mijn naam is bas, ik ben onlangs ontslagen! en vraag me af wat ik fout deed, ik was altijd op tijd, werkte hard en had met niemand problemen, Mijn baas wilt nu dat ik Mijn handtekening zet onder een ontslagovereenkomst! wat moet ik doen? Groetjes Bas ", "type": "email", "correct" : 3 },
+		{"ID": 4 ,"text": "case 5, Hey Hey, ik ben Ruben en ik wilt graag bij wat meer werken bij de Albert heijn, helaas staat Mijn baas dat niet toe wegens regelgeving, ik weet niet wat deze regelgeving is. kunnen jullie mij helpen? ", "type": "email", "correct" : 4 },
+		{"ID": 5 ,"text": "case 6, Hey.... , Ik ben thomas en ik heb snoep gejat bij de blokker, ik ben nu gepakt en de baas drijgt er mee om de politie te bellen, wat kan ik verwachten ? Groetjes, thomas! ", "type": "email", "correct" : 5 },
+		{"ID": 6 ,"text": "case 7, Hallo ik ben Andor en moet bij de politie komen. Je kan je voorstellen dat ik verschrikkelijk zenuwachtig ben en ik geen idee heb wat mij te wachten staat. Hebben jullie advies/informatie? ", "type": "email", "correct" : 6 },
+		{"ID": 7 ,"text": "case 8, Hallo ik en Mijn ouders gaan scheiden, Mijn ouders Hebben veelal ruzie gehad en nu is hun huwelijk spaak gelopen, ik vraag me af hoe ik het moet regelen om er voor te zorgen dat ik bij Mijn moeder kan wonen, ik weet niet wat ik moet doen! ", "type": "email", "correct" : 7 }
 	]
 }
