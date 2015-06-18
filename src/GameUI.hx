@@ -55,10 +55,13 @@ class GameUI extends Sprite
 			
 			Actuate.apply (dropDownmenu, { y: (main.stage.stageHeight) - 1050 } );
 			Actuate.tween (dropDownmenu, 0.7, { y: (main.stage.stageHeight) / 2 } );
+			
+			main.sound.playSound("dropdown2");
 		}
 		else
 		{
 			continueGame();
+			main.sound.playSound("dropdown1");
 		}
 	}
 	
@@ -67,11 +70,13 @@ class GameUI extends Sprite
 		Actuate.apply (dropDownmenu, { y: (main.stage.stageHeight) / 2 } );
 		Actuate.tween (dropDownmenu, 0.7, { y: (main.stage.stageHeight) -1050 } ).onComplete(removeMenu, null);
 		main.gameUnPause();
+		main.sound.playSound("dropdown1");
 	}
 	
 	function removeMenu()
 	{
 		removeChild(dropDownmenu);
 		menuShown = false;
-	}
+	}	
+	
 }

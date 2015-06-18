@@ -72,7 +72,7 @@ class OpenBook extends StaticObject
 			bookTxtField.ID = book.entrys[i].ID;
 			addChild (bookTxtField);
 			
-			trace (bookTxtField.numLines);
+			//trace (bookTxtField.numLines);
 			
 			var txtMetrics : TextLineMetrics = bookTxtField.getLineMetrics(bookTxtField.numLines -1);
 			
@@ -90,7 +90,7 @@ class OpenBook extends StaticObject
 	
 	function clickAnswer (event:MouseEvent)
 	{
-		trace (event.currentTarget.text);
+		//trace (event.currentTarget.text);
 		book.dragAnswer(event.currentTarget);
 	}
 	

@@ -43,11 +43,13 @@ class GameMain extends Sprite
 	var screen:PCScreen;
 	public var casesArray:Array<Case> = new Array<Case>();
 	var clock:Clock;
-	
+	var scoreCounter:ScoreCounter;
 	var gamePause:Bool = false ;
 	
 	var tempDragAnswer : DragAnswer ;
 	
+	var casePointsAdd: Int = 10 ;
+	var casePointsSub: Int = 5 ;
 	
 	public function new(main:Main) 
 	{
@@ -142,6 +144,12 @@ class GameMain extends Sprite
 		screen.scaleY = 1 ;
 		addChild(screen);
 		
+		scoreCounter = new ScoreCounter ();
+		scoreCounter.x = 500 ;
+		scoreCounter.y = 5 ;
+		addChild(scoreCounter);
+		
+		
 	}
 	
 	function createClock ()
@@ -199,6 +207,7 @@ class GameMain extends Sprite
 		{
 			clock.update();
 			screen.update();
+			scoreCounter.update(main.gameStats.score);
 		}
 	}
 	
@@ -219,9 +228,38 @@ class GameMain extends Sprite
 	
 	function releaseDragAnswer (event:MouseEvent)
 	{
+		// check if over input field
+		
+		var rect:Rectangle = screen.inputField.getBounds(this);
+		var caseID:Int = screen.getCaseID() ;
+		
+		if (rect.contains(event.stageX, event.stageY))
+		{
+			// check answer
+			if (tempDragAnswer.getID() == casesArray[caseID].caseID)
+			{
+				trace ("inputs: "+tempDragAnswer.getID()+", "+ casesArray[caseID].caseID);
+				trace ("good answer");
+				
+				main.gameStats.score = main.gameStats.score + casePointsAdd ;
+				screen.closeCase();
+				main.sound.playSound("goodanswer");
+			}
+			else
+			{
+				trace ("try again");
+				trace ("inputs: " + tempDragAnswer.getID() + ", " + casesArray[caseID].caseID);
+				
+				main.gameStats.score = main.gameStats.score - casePointsSub ;
+				main.sound.playSound("badanswer");
+			}
+			
+		}
+		
 		trace (tempDragAnswer.getID());
 		removeChild(tempDragAnswer);
 		stage.removeEventListener( MouseEvent.MOUSE_UP, releaseDragAnswer );
+		
 	}
 	
 }

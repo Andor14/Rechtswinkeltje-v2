@@ -143,7 +143,6 @@ class Main extends Sprite
 		currentScreen = mainMenu ;
 	}
 	
-	
 	/**
 	
 	public function startGame():Void

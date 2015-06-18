@@ -14,8 +14,10 @@ class PCScreen extends StaticObject
 	var game:GameMain ;
 	var main:Main ;
 	var popup:StaticObject ;
+	public var inputField:StaticObject ;
 	var caseSelected : Bool = false ;
 	var currentCase : Int ;
+	var txtField : TextField ;
 	var timer:Timer ;
 	
 	var textx : Int = 50 ;
@@ -27,7 +29,7 @@ class PCScreen extends StaticObject
 		this.game = gameMain ;
 		this.main = main ;
 		init();
-		setCountdown();
+		startCountdown();
 	}
 	
 	function init()
@@ -35,21 +37,27 @@ class PCScreen extends StaticObject
 		timer = new Timer ();
 	}
 	
-	function setCountdown ()
+	function startCountdown ()
 	{
 		timer.setTime(100);
 		
-		trace ("time set");
 		
 		timer.startTimer();
-		
+	}
+	
+	public function closeCase ()
+	{
+		removeChild(inputField);
+		removeChild(txtField);
+		caseSelected = false ;
+		startCountdown();
 	}
 	
 	function openCase ()
 	{
-		trace ("New case");
 		selectCase();
 		displayText();
+		displayInputBox();
 		main.sound.playSound("incoming");
 		
 		popup = new StaticObject ("img/bookcase.png");
@@ -65,16 +73,27 @@ class PCScreen extends StaticObject
 		//trace(game.casesArray[currentCase].caseText);
 	}
 	
+	function displayInputBox ()
+	{
+		inputField = new StaticObject("img/AntwoordBox.png") ;
+		inputField.x = 50 ;
+		inputField.y = 300 ;
+		inputField.alpha = 0 ;
+		addChild(inputField);
+		
+		Actuate.tween (inputField, 2.0 , { alpha:1 } );
+	}
+	
 	function displayText ()
 	{
 		var textFormat: TextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
-		var txtField : TextField = new TextField ();
+		txtField = new TextField ();
 		txtField.defaultTextFormat = textFormat;	
 		
 		txtField.x = textx;
 		txtField.y = texty;
-		txtField.width = 160 ;
-		txtField.height = 50 ;
+		txtField.width = 350 ;
+		txtField.height = 300 ;
 		txtField.multiline = true ;
 		txtField.wordWrap = true ;
 		txtField.selectable = false ;
@@ -103,6 +122,25 @@ class PCScreen extends StaticObject
 		{
 			//trace ("true") ;
 		}
+	}
+	
+	public function getCaseID ():Int
+	{
+		return currentCase;
+	}
+	
+	public function feedbackGood ()
+	{
+		// WIP
+		
+		var vinkje : StaticObject = new StaticObject ("img/goodanswer.png") ;
+		vinkje.x = this.width / 2 ;
+		vinkje.y = (this.height / 2) + 100 ;
+		addChild(vinkje) ;
+		vinkje.alpha = 0 ;
+		
+		Actuate.tween (vinkje, 1.0 , { alpha:1 } );
+		
 	}
 	
 }
