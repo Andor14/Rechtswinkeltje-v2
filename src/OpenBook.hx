@@ -175,7 +175,6 @@ class OpenBook extends StaticObject
 			
 			if (i == book.entrys.length - 1)
 			{
-				trace ("final");
 				pages.push(currentPage);
 			}
 			

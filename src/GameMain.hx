@@ -36,8 +36,8 @@ class GameMain extends Sprite
 	var main:Main;
 	
 	var book1:Book;
-	var book1PosX:Float;
-	var book1PosY:Float;
+	var book2:Book;
+	
 	var desk:StaticObject;
 	var bookcase:StaticObject;
 	var screen:PCScreen;
@@ -47,6 +47,7 @@ class GameMain extends Sprite
 	var gamePause:Bool = false ;
 	
 	var tempDragAnswer : DragAnswer ;
+	var tempBook : Book ;
 	
 	var casePointsAdd: Int = 10 ;
 	var casePointsSub: Int = 5 ;
@@ -105,16 +106,27 @@ class GameMain extends Sprite
 	
 	function createBooks ()
 	{
-		book1 = new Book("img/book.png",main,this);
+		book1 = new Book("img/book.png",main,this,"lib/book1.json");
 		book1.x = 915;
 		book1.y = 23;
-		book1PosX = book1.x ;
-		book1PosY = book1.y ;
+		book1.startX = book1.x ;
+		book1.startY = book1.y ;
 		book1.scaleX = 0.8 ;
 		book1.scaleY = 0.8 ;
 		addChild( book1 );
 		
 		book1.addEventListener( MouseEvent.MOUSE_DOWN, startDraggingBook );
+		
+		book2 = new Book("img/book.png",main,this,"lib/book2.json");
+		book2.x = 995;
+		book2.y = 23;
+		book2.startX = book2.x ;
+		book2.startY = book2.y ;
+		book2.scaleX = 0.8 ;
+		book2.scaleY = 0.8 ;
+		addChild( book2 );
+		
+		book2.addEventListener( MouseEvent.MOUSE_DOWN, startDraggingBook );
 	}
 	
 	function createObjects ()
@@ -165,6 +177,7 @@ class GameMain extends Sprite
 			if (event.currentTarget.overAnswer == false)
 			{
 				cast( event.currentTarget, Book ).startDrag( );
+				tempBook = event.currentTarget ;
 				stage.addEventListener( MouseEvent.MOUSE_UP, releaseObjectBook );
 			}
 		}
@@ -179,13 +192,13 @@ class GameMain extends Sprite
 		
 		if (rect.contains(event.stageX, event.stageY))
 		{
-			book1.openBook();
+			tempBook.openBook();
 		}
 		else
 		{
-			Actuate.tween (book1, 0.3, { x:book1PosX } );
-			Actuate.tween (book1, 0.3, { y:book1PosY } );
-			book1.closeBook();
+			Actuate.tween (tempBook, 0.3, { x:tempBook.startX } );
+			Actuate.tween (tempBook, 0.3, { y:tempBook.startY } );
+			tempBook.closeBook();
 		}
 	}
 	
@@ -252,9 +265,9 @@ class GameMain extends Sprite
 				main.gameStats.score = main.gameStats.score - casePointsSub ;
 				main.sound.playSound("badanswer");
 			}
-			
-			
 		}
+		
+		
 		
 		removeChild(tempDragAnswer);
 		stage.removeEventListener( MouseEvent.MOUSE_UP, releaseDragAnswer );

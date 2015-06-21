@@ -29,14 +29,19 @@ class Book extends StaticObject
 	var openBookObj:OpenBook;
 	var main:Main;
 	var game:GameMain;
+	var jsonPath:String;
 	public var entrys:Array<Answer> = new Array<Answer>();
 	public var overAnswer:Bool = false ;
 	
-	public function new(image:String,main:Main,gameMain:GameMain) 
+	public var startX:Float ;
+	public var startY:Float ;
+	
+	public function new(image:String,main:Main,gameMain:GameMain,json:String) 
 	{
 		super(image);
 		this.main = main;
 		this.game = gameMain;
+		this.jsonPath = json;
 		
 		createEntrys();
 		openBookObj = new OpenBook("img/bookopen.png",this);
@@ -57,7 +62,8 @@ class Book extends StaticObject
 	
 	function createEntrys()
 	{
-		var jsonString = Assets.getText("lib/book1.json");
+		
+		var jsonString = Assets.getText(jsonPath);
 		var jsonObject:Book.Book1 = Json.parse( jsonString );
 		var entryCount:Int = jsonObject.book1.length;
 		for(  i in 0...entryCount )
