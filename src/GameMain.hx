@@ -236,18 +236,18 @@ class GameMain extends Sprite
 			// check answer
 			if (tempDragAnswer.getID() == casesArray[caseID].caseID)
 			{
-				trace ("inputs: "+tempDragAnswer.getID()+", "+ casesArray[caseID].caseID);
-				trace ("good answer");
+				//trace ("inputs: "+tempDragAnswer.getID()+", "+ casesArray[caseID].caseID);
+				//trace ("good answer");
 				
 				main.gameStats.score = main.gameStats.score + casePointsAdd ;
-				screen.closeCase();
+				screen.goodAnswerSeq();
 				main.sound.playSound("goodanswer");
 				main.gameStats.casesAnswered = main.gameStats.casesAnswered + 1 ;
 			}
 			else
 			{
-				trace ("try again");
-				trace ("inputs: " + tempDragAnswer.getID() + ", " + casesArray[caseID].caseID);
+				//trace ("try again");
+				//trace ("inputs: " + tempDragAnswer.getID() + ", " + casesArray[caseID].caseID);
 				
 				main.gameStats.score = main.gameStats.score - casePointsSub ;
 				main.sound.playSound("badanswer");
