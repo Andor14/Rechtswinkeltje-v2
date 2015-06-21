@@ -56,8 +56,6 @@ class GameMain extends Sprite
 		super();	
 		this.main = main;
 		
-		
-		
 		createBackground();
 		createObjects();
 		createClock();
