@@ -4,6 +4,7 @@ import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.text.TextFormatAlign;
 import openfl.text.TextLineMetrics;
+import openfl.text.TextFieldAutoSize;
 import openfl.events.MouseEvent;
 import openfl.Assets;
 import haxe.Json;
@@ -20,6 +21,8 @@ class OpenBook extends StaticObject
 	var closeButton:Button;
 	var book:Book;
 	var jsonData:Dynamic;
+	var pages:Array<Page> = new Array<Page>();
+	var currentTwoPages:Int = 0;
 	
 	public function new(image:String,book:Book) 
 	{
@@ -29,6 +32,7 @@ class OpenBook extends StaticObject
 		bookInit();
 		addButton();
 		fillbook();		
+		showPages(0);
 		
 	}
 	
@@ -40,8 +44,8 @@ class OpenBook extends StaticObject
 	function addButton()
 	{
 		closeButton = new Button ("img/bookclose.png", "img/bookclose2.png");
-		closeButton.x = 375 ;
-		closeButton.y = 10 ;
+		closeButton.x = 600 ;
+		closeButton.y = 15 ;
 		closeButton.addEventListener( MouseEvent.CLICK, clickButton );
 		addChild(closeButton);
 	}
@@ -53,8 +57,15 @@ class OpenBook extends StaticObject
 	
 	function fillbook()
 	{
-		var ypos: Int = 10 ;
-		var xpos: Int = 30 ;
+		var yposTop:Int = 27 ;
+		var ypos: Int = 27 ;
+		var xpos: Int = 24 ;
+		var xpos2: Int = 320 ;
+		var pageLength:Int = 341 ;
+		var page2:Bool = false ;
+		
+		var page:Page = new Page();
+		var currentPage:Page = page;
 		
 		for (i in 0...book.entrys.length)
 		{
@@ -63,14 +74,15 @@ class OpenBook extends StaticObject
 			
 			bookTxtField.x = xpos;
 			bookTxtField.y = ypos;
-			bookTxtField.width = 160 ;
-			bookTxtField.height = 50 ;
+			bookTxtField.width = 290 ;
+			//bookTxtField.height = 50 ;
 			bookTxtField.multiline = true ;
 			bookTxtField.wordWrap = true ;
 			bookTxtField.selectable = false ;
 			bookTxtField.text = book.entrys[i].text;
 			bookTxtField.ID = book.entrys[i].ID;
-			addChild (bookTxtField);
+			bookTxtField.autoSize = LEFT ;
+			//addChild (bookTxtField);
 			
 			//trace (bookTxtField.numLines);
 			
@@ -83,10 +95,59 @@ class OpenBook extends StaticObject
 			bookTxtField.addEventListener(MouseEvent.MOUSE_OVER,mouseOverAnswer);
 			bookTxtField.addEventListener(MouseEvent.MOUSE_OUT,mouseOutAnswer);
 				
-			ypos = ypos + Std.int(txtMetrics.height) + 50 ;
+
+			ypos = ypos + Std.int(bookTxtField.height) + 15 ;
+
+			if ((bookTxtField.y + Std.int(bookTxtField.height)) > pageLength )
+			{
+				if (page2 == true)
+				{
+					page2 = false ;
+					
+					pages.push(currentPage);
+					
+					
+					var newPage :Page = new Page();
+					currentPage = newPage ;
+					
+					ypos = yposTop;
+					bookTxtField.y = ypos ;
+					bookTxtField.x = xpos ;
+					currentPage.pageArray.push(bookTxtField);
+					
+					ypos = ypos + Std.int(bookTxtField.height) + 15 ;
+				}
+				else
+				{
+					
+					page2 = true ;
+					
+					ypos = yposTop;
+					bookTxtField.y = ypos ;
+					bookTxtField.x = xpos2 ;
+					currentPage.pageArray.push(bookTxtField);
+
+					
+					ypos = ypos + Std.int(bookTxtField.height) + 15 ;
+					
+				}
+			}
+			else 
+			{
+				currentPage.pageArray.push(bookTxtField);
+			}
 		}
 	}
 	
+	function showPages (input:Int)
+	{
+		var a:Int = input ;
+		
+		for (i in 0...pages[a].pageArray.length)
+		{
+			addChild(pages[a].pageArray[i]);
+		}
+	}
 	
 	function clickAnswer (event:MouseEvent)
 	{

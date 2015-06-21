@@ -22,6 +22,7 @@ class Advancementscreen extends Sprite
 	var main:Main ;
 	var playerName: String ;
 	var score: Int ;
+	var answeredCases:Int ;
 	
 	var exitButton:Button = new Button("img/Exit.png", "img/Exit2.png");
 	var contButton:Button = new Button("img/continue.png", "img/continue2.png");
@@ -33,8 +34,7 @@ class Advancementscreen extends Sprite
 		this.main = input ;
 		playerName = main.gameStats.playerName ;
 		score = main.gameStats.score ;
-		
-		trace (main.gameStats.playerName);
+		answeredCases = main.gameStats.casesAnswered ;
 		
 		createBackground();
 		createButtons();
@@ -95,7 +95,18 @@ class Advancementscreen extends Sprite
 		scoreTextField.x = ((main.stage.stageWidth) / 2) - (scoreTextField.width / 2);
 		scoreTextField.y = 100 ;
 		addChild (scoreTextField);
-		scoreTextField.text = playerName+"'s score: "+score;
+		scoreTextField.text = playerName+"'s verdiende punten: " + score;
+		scoreTextField.selectable = false ;
+		
+		var scoreTextField2:TextField = new TextField();
+		scoreTextField2.defaultTextFormat = scoreTextFormat ;
+		scoreTextField2.width = 700 ;
+		scoreTextField2.height = 50 ;
+		scoreTextField2.x = ((main.stage.stageWidth) / 2) - (scoreTextField2.width / 2);
+		scoreTextField2.y = 150 ;
+		addChild (scoreTextField2);
+		scoreTextField2.text = "Beantwoorde vragen: " + answeredCases;
+		scoreTextField2.selectable = false ;
 	}
 	
 }

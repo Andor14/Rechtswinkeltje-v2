@@ -109,11 +109,11 @@ class GameMain extends Sprite
 	{
 		book1 = new Book("img/book.png",main,this);
 		book1.x = 915;
-		book1.y = 60;
+		book1.y = 23;
 		book1PosX = book1.x ;
 		book1PosY = book1.y ;
-		book1.scaleX = 0.2 ;
-		book1.scaleY = 0.2 ;
+		book1.scaleX = 0.8 ;
+		book1.scaleY = 0.8 ;
 		addChild( book1 );
 		
 		book1.addEventListener( MouseEvent.MOUSE_DOWN, startDraggingBook );
@@ -244,6 +244,7 @@ class GameMain extends Sprite
 				main.gameStats.score = main.gameStats.score + casePointsAdd ;
 				screen.closeCase();
 				main.sound.playSound("goodanswer");
+				main.gameStats.casesAnswered = main.gameStats.casesAnswered + 1 ;
 			}
 			else
 			{
@@ -253,6 +254,7 @@ class GameMain extends Sprite
 				main.gameStats.score = main.gameStats.score - casePointsSub ;
 				main.sound.playSound("badanswer");
 			}
+			
 			
 		}
 		

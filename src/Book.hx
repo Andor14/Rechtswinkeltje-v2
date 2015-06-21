@@ -51,8 +51,8 @@ class Book extends StaticObject
 		openBookObj.x = openBookObj.x - (openBookObj.width/2);
 		openBookObj.y = openBookObj.y - (openBookObj.height/2);
 		
-		openBookObj.scaleX = 5 ;
-		openBookObj.scaleY = 5 ;
+		openBookObj.scaleX = 1.2 ;
+		openBookObj.scaleY = 1.2 ;
 	}
 	
 	function createEntrys()
