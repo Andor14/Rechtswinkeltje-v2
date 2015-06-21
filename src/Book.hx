@@ -60,7 +60,6 @@ class Book extends StaticObject
 		var jsonString = Assets.getText("lib/book1.json");
 		var jsonObject:Book.Book1 = Json.parse( jsonString );
 		var entryCount:Int = jsonObject.book1.length;
-
 		for(  i in 0...entryCount )
 		{
 			//trace( jsonObject.quiz[i] );

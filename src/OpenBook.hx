@@ -19,9 +19,12 @@ class OpenBook extends StaticObject
 	var textField2:TextField;
 	var bookTextFormat:TextFormat;
 	var closeButton:Button;
+	var nextPageButton:Button;
+	var prevPageButton:Button;
 	var book:Book;
 	var jsonData:Dynamic;
 	var pages:Array<Page> = new Array<Page>();
+	var textHolder:Array<BookTextField> = new Array<BookTextField>();
 	var currentTwoPages:Int = 0;
 	
 	public function new(image:String,book:Book) 
@@ -30,7 +33,7 @@ class OpenBook extends StaticObject
 		this.book = book;
 		
 		bookInit();
-		addButton();
+		addButtons();
 		fillbook();		
 		showPages(0);
 		
@@ -41,18 +44,49 @@ class OpenBook extends StaticObject
 		bookTextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
 	}
 	
-	function addButton()
+	function addButtons()
 	{
 		closeButton = new Button ("img/bookclose.png", "img/bookclose2.png");
 		closeButton.x = 600 ;
 		closeButton.y = 15 ;
 		closeButton.addEventListener( MouseEvent.CLICK, clickButton );
 		addChild(closeButton);
+		
+		nextPageButton = new Button ("img/bookclose.png", "img/bookclose2.png");
+		nextPageButton.x = 600 ;
+		nextPageButton.y = 380 ;
+		nextPageButton.addEventListener( MouseEvent.CLICK, nextPage );
+		addChild(nextPageButton);
+		
+		prevPageButton = new Button ("img/bookclose.png", "img/bookclose2.png");
+		prevPageButton.x = 10 ;
+		prevPageButton.y = 380 ;
+		prevPageButton.addEventListener( MouseEvent.CLICK, prevPage );
+		addChild(prevPageButton);
+		
 	}
 	
 	function clickButton(event:MouseEvent)
 	{
 		book.closeBook();
+	}
+	
+	function nextPage(event:MouseEvent)
+	{
+		if (currentTwoPages < (pages.length))
+		{
+		currentTwoPages = currentTwoPages + 1;
+		showPages(currentTwoPages);
+		}
+	}
+	
+	function prevPage(event:MouseEvent)
+	{
+		if (currentTwoPages > 0)
+		{
+		currentTwoPages = currentTwoPages - 1;
+		showPages(currentTwoPages);
+		}
 	}
 	
 	function fillbook()
@@ -66,9 +100,11 @@ class OpenBook extends StaticObject
 		
 		var page:Page = new Page();
 		var currentPage:Page = page;
+
 		
 		for (i in 0...book.entrys.length)
 		{
+			
 			var bookTxtField : BookTextField = new BookTextField ();
 			bookTxtField.defaultTextFormat = bookTextFormat;
 			
@@ -136,15 +172,23 @@ class OpenBook extends StaticObject
 			{
 				currentPage.pageArray.push(bookTxtField);
 			}
+			
+			
 		}
 	}
 	
 	function showPages (input:Int)
 	{
+		for (i in 0...textHolder.length)
+		{
+			removeChild(textHolder.pop());
+		}
+		
 		var a:Int = input ;
 		
 		for (i in 0...pages[a].pageArray.length)
 		{
+			textHolder.push(pages[a].pageArray[i]);
 			addChild(pages[a].pageArray[i]);
 		}
 	}
