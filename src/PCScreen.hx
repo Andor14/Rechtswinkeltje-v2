@@ -4,6 +4,7 @@ import motion.Actuate;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.text.TextFormatAlign;
+import openfl.text.TextFieldAutoSize;
 
 /**
  * ...
@@ -18,6 +19,7 @@ class PCScreen extends StaticObject
 	var caseSelected : Bool = false ;
 	var currentCase : Int ;
 	var txtField : TextField ;
+	var txtBG : ChatBackground ;
 	var timer:Timer ;
 	
 	var textx : Int = 50 ;
@@ -49,6 +51,7 @@ class PCScreen extends StaticObject
 	{
 		removeChild(inputField);
 		removeChild(txtField);
+		removeChild(txtBG);
 		caseSelected = false ;
 		startCountdown();
 	}
@@ -86,6 +89,7 @@ class PCScreen extends StaticObject
 	
 	function displayText ()
 	{
+		
 		var textFormat: TextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
 		txtField = new TextField ();
 		txtField.defaultTextFormat = textFormat;	
@@ -99,8 +103,16 @@ class PCScreen extends StaticObject
 		txtField.selectable = false ;
 		txtField.text = game.casesArray[currentCase].caseText;
 		txtField.alpha = 0 ;
+		txtField.autoSize = LEFT ;
+		
+		txtBG = new ChatBackground(txtField.width, txtField.height);
+		txtBG.x = txtField.x ;
+		txtBG.y = txtField.y ;
+		
+		addChild (txtBG);
 		addChild (txtField);
 		
+		Actuate.tween (txtBG, 1.0 , { alpha:1 } );
 		Actuate.tween (txtField, 1.0 , { alpha:1 } );
 	}
 	
