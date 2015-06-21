@@ -5,6 +5,7 @@ import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.text.TextFormatAlign;
 import openfl.text.TextFieldAutoSize;
+import openfl.events.MouseEvent ;
 
 /**
  * ...
@@ -14,7 +15,8 @@ class PCScreen extends StaticObject
 {
 	var game:GameMain ;
 	var main:Main ;
-	var popup:StaticObject ;
+	var popup:Button ;
+	var onScreen:StaticObject ;
 	public var inputField:StaticObject ;
 	var caseSelected : Bool = false ;
 	var currentCase : Int ;
@@ -47,11 +49,22 @@ class PCScreen extends StaticObject
 		timer.startTimer();
 	}
 	
-	public function closeCase ()
+	public function goodAnswerSeq ()
+	{
+		Actuate.tween (txtBG, 1.0 , { alpha:0 } );
+		Actuate.tween (txtField, 1.0 , { alpha:0 } );
+		Actuate.tween (inputField, 1.0 , { alpha:0 } );
+		Actuate.tween (onScreen, 2.0 , { alpha:0 } );
+		
+		haxe.Timer.delay(closeCase, 500);
+	}
+	
+	function closeCase ()
 	{
 		removeChild(inputField);
 		removeChild(txtField);
 		removeChild(txtBG);
+		removeChild(onScreen);
 		caseSelected = false ;
 		startCountdown();
 	}
@@ -59,15 +72,13 @@ class PCScreen extends StaticObject
 	function openCase ()
 	{
 		selectCase();
-		displayText();
-		displayInputBox();
-		main.sound.playSound("incoming");
+		showOnScreen();
 		
-		popup = new StaticObject ("img/bookcase.png");
-		popup.x = 900;
-		popup.y = 0;
-		//addChild(popup);
+		haxe.Timer.delay(displayText, 500);
+		haxe.Timer.delay(displayInputBox, 700);
 		
+		//displayText();
+		//displayInputBox();
 	}
 	
 	function selectCase ()
@@ -105,9 +116,9 @@ class PCScreen extends StaticObject
 		txtField.alpha = 0 ;
 		txtField.autoSize = LEFT ;
 		
-		txtBG = new ChatBackground(txtField.width, txtField.height);
-		txtBG.x = txtField.x ;
-		txtBG.y = txtField.y ;
+		txtBG = new ChatBackground((txtField.width + 10), (txtField.height + 10));
+		txtBG.x = txtField.x - 5 ;
+		txtBG.y = txtField.y - 5 ;
 		
 		addChild (txtBG);
 		addChild (txtField);
@@ -116,13 +127,39 @@ class PCScreen extends StaticObject
 		Actuate.tween (txtField, 1.0 , { alpha:1 } );
 	}
 	
+		function showOnScreen ()
+	{
+		onScreen = new StaticObject ("img/PCon.png");
+		onScreen.x = 18;
+		onScreen.y = 13;
+		addChild(onScreen);
+	}
+	
+	function showPopup ()
+	{
+		popup = new Button ("img/PCmessage.png", "img/PCmessageHover.png");
+		popup.x = 18;
+		popup.y = 13;
+		popup.alpha = 0 ;
+		popup.addEventListener( MouseEvent.CLICK, clickPopup );
+		addChild(popup);
+		Actuate.tween (popup, 1.0 , { alpha:1 } );
+		main.sound.playSound("incoming");
+	}
+	
+	function clickPopup (event:MouseEvent)
+	{
+		removeChild(popup);
+		openCase();
+	}
+	
 	public function update ()
 	{
 		if (caseSelected == false )
 		{
 			if (timer.getDone() == true )
 			{
-				openCase();
+				showPopup();
 				caseSelected = true ;
 			}
 			else
