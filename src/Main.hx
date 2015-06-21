@@ -141,34 +141,13 @@ class Main extends Sprite
 		
 		addChild (mainMenu);
 		currentScreen = mainMenu ;
+		resetScore();
 	}
 	
-	/**
-	
-	public function startGame():Void
+	public function resetScore ()
 	{
-		removeChild (mainMenu) ;
-		gameMain = new GameMain(this);
-		addChild(gameMain) ;
-		gameUI = new GameUI(this);
-		addChild(gameUI);
+		gameStats.score = 0 ;
 	}
-	
-	public function openAdvanceScreen()
-	{
-		removeChild (gameMain);
-		removeChild (gameUI);
-		addChild (advanceScreen);
-	}
-	
-	public function backToMain()
-	{
-		removeChild (gameMain);
-		removeChild (gameUI);
-		addChild (mainMenu);
-	}
-		
-	*/
 	
 	public function gamePause ()
 	{

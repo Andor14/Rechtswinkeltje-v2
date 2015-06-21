@@ -73,7 +73,7 @@ class OpenBook extends StaticObject
 	
 	function nextPage(event:MouseEvent)
 	{
-		if (currentTwoPages < (pages.length))
+		if (currentTwoPages < (pages.length - 1))
 		{
 		currentTwoPages = currentTwoPages + 1;
 		showPages(currentTwoPages);
@@ -173,6 +173,11 @@ class OpenBook extends StaticObject
 				currentPage.pageArray.push(bookTxtField);
 			}
 			
+			if (i == book.entrys.length - 1)
+			{
+				trace ("final");
+				pages.push(currentPage);
+			}
 			
 		}
 	}
