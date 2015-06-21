@@ -39,6 +39,10 @@ class PCScreen extends StaticObject
 	function init()
 	{
 		timer = new Timer ();
+		inputField = new StaticObject("img/AntwoordBox.png") ;
+		inputField.x = 50 ;
+		inputField.y = 300 ;
+		inputField.alpha = 0 ;
 	}
 	
 	function startCountdown ()
@@ -89,10 +93,6 @@ class PCScreen extends StaticObject
 	
 	function displayInputBox ()
 	{
-		inputField = new StaticObject("img/AntwoordBox.png") ;
-		inputField.x = 50 ;
-		inputField.y = 300 ;
-		inputField.alpha = 0 ;
 		addChild(inputField);
 		
 		Actuate.tween (inputField, 2.0 , { alpha:1 } );
