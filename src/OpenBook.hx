@@ -26,6 +26,9 @@ class OpenBook extends StaticObject
 	var pages:Array<Page> = new Array<Page>();
 	var textHolder:Array<BookTextField> = new Array<BookTextField>();
 	var currentTwoPages:Int = 0;
+	var pageNumberRight : TextField ;
+	var pageNumberLeft : TextField ;
+	var rightPage:Int = 1 ;
 	
 	public function new(image:String,book:Book) 
 	{
@@ -36,12 +39,46 @@ class OpenBook extends StaticObject
 		addButtons();
 		fillbook();		
 		showPages(0);
+		addPageNumbers();
 		
 	}
 	
 	function bookInit ()
 	{
 		bookTextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
+	}
+	
+	function addPageNumbers ()
+	{
+		pageNumberRight = new TextField ();
+		pageNumberRight.defaultTextFormat = bookTextFormat;
+			
+		pageNumberRight.x = (this.width/2) - 25;
+		pageNumberRight.y = 370;
+		pageNumberRight.width = 50 ;
+		pageNumberRight.height = 50 ;
+		pageNumberRight.selectable = false ;
+		pageNumberRight.text = "1";
+		
+		addChild(pageNumberRight);
+		
+		pageNumberLeft = new TextField ();
+		pageNumberLeft.defaultTextFormat = bookTextFormat;
+			
+		pageNumberLeft.x = (this.width/2) + 10;
+		pageNumberLeft.y = 370;
+		pageNumberLeft.width = 50 ;
+		pageNumberLeft.height = 50 ;
+		pageNumberLeft.selectable = false ;
+		pageNumberLeft.text = "2";
+		
+		addChild(pageNumberLeft);
+	}
+	
+	function updatePageNumbers ()
+	{
+		pageNumberRight.text = Std.string(rightPage) ;
+		pageNumberLeft.text = Std.string((rightPage + 1));
 	}
 	
 	function addButtons()
@@ -77,6 +114,9 @@ class OpenBook extends StaticObject
 		{
 		currentTwoPages = currentTwoPages + 1;
 		showPages(currentTwoPages);
+		rightPage = rightPage + 2 ;
+		updatePageNumbers();
+		
 		}
 	}
 	
@@ -86,6 +126,8 @@ class OpenBook extends StaticObject
 		{
 		currentTwoPages = currentTwoPages - 1;
 		showPages(currentTwoPages);
+		rightPage = rightPage - 2 ;
+		updatePageNumbers();
 		}
 	}
 	
