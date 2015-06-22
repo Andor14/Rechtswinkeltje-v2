@@ -26,6 +26,8 @@ class PCScreen extends StaticObject
 	var txtBG : ChatBackground ;
 	var txtBG2: ChatBackground ;
 	var timer:Timer ;
+	var goodAnswerImg:StaticObject ;
+	var goodAnswer:Bool;
 	
 	var textx : Int = 50 ;
 	var texty : Int = 50 ;
@@ -57,8 +59,10 @@ class PCScreen extends StaticObject
 		timer.startTimer();
 	}
 	
-	public function goodAnswerSeq (chatText:String)
+	public function goodAnswerSeq (chatText:String, goodAnswerInput:Bool )
 	{
+		goodAnswer = goodAnswerInput ;
+		
 		txtField2 = new TextField();
 		txtField2.defaultTextFormat = textFormat;	
 		
@@ -83,12 +87,69 @@ class PCScreen extends StaticObject
 		Actuate.tween (txtBG2, 1.0 , { alpha:1 } );
 		Actuate.tween (txtField2, 1.0 , { alpha:1 } );
 		
+		if (goodAnswer == true)
+		{
+			haxe.Timer.delay(goodAnswerSeq2, 500);
+		}
+		else
+		{
+			haxe.Timer.delay(badAnswerSeq, 500);
+		}
 		
-		haxe.Timer.delay(goodAnswerSeq2, 1000);
 		
 	}
 	
+	function badAnswerSeq ()
+	{
+		goodAnswerImg = new StaticObject("img/badanswer.png");
+		goodAnswerImg.x = 30 ;
+		goodAnswerImg.y = txtField2.y ;
+		goodAnswerImg.alpha = 0 ;
+		goodAnswerImg.scaleX = 1 ;
+		goodAnswerImg.scaleY = 1 ;
+		addChild(goodAnswerImg);
+		
+		Actuate.tween (goodAnswerImg, 1.0 , { alpha:1 } );
+		
+		main.sound.playSound("badanswer");
+		
+		haxe.Timer.delay(badAnswerSeq2, 1000);
+	}
+	
+		function badAnswerSeq2 ()
+	{
+		Actuate.tween (txtBG2, 1.0 , { alpha:0 } );
+		Actuate.tween (txtField2, 1.0 , { alpha:0 } );
+		Actuate.tween (goodAnswerImg, 1.0 , { alpha:0 } );
+		
+		haxe.Timer.delay(badAnswerSeq3, 500);
+	}
+	
+		function badAnswerSeq3 ()
+	{
+		removeChild(txtField2);
+		removeChild(txtBG2);
+		removeChild(goodAnswerImg);
+	}
+	
 	function goodAnswerSeq2 ()
+	{
+		goodAnswerImg = new StaticObject("img/goodanswer.png");
+		goodAnswerImg.x = 30 ;
+		goodAnswerImg.y = txtField2.y ;
+		goodAnswerImg.alpha = 0 ;
+		goodAnswerImg.scaleX = 1 ;
+		goodAnswerImg.scaleY = 1 ;
+		addChild(goodAnswerImg);
+		
+		Actuate.tween (goodAnswerImg, 1.0 , { alpha:1 } );
+		
+		main.sound.playSound("goodanswer");
+		
+		haxe.Timer.delay(goodAnswerSeq3, 1000);
+	}
+	
+		function goodAnswerSeq3 ()
 	{
 		Actuate.tween (txtBG, 1.0 , { alpha:0 } );
 		Actuate.tween (txtField, 1.0 , { alpha:0 } );
@@ -96,6 +157,7 @@ class PCScreen extends StaticObject
 		Actuate.tween (txtField2, 1.0 , { alpha:0 } );
 		Actuate.tween (inputField, 1.0 , { alpha:0 } );
 		Actuate.tween (onScreen, 2.0 , { alpha:0 } );
+		Actuate.tween (goodAnswerImg, 1.0 , { alpha:0 } );
 		
 		haxe.Timer.delay(closeCase, 500);
 	}
@@ -110,6 +172,8 @@ class PCScreen extends StaticObject
 		removeChild(onScreen);
 		caseSelected = false ;
 		startCountdown();
+		
+		removeChild(goodAnswerImg);
 	}
 	
 	function openCase ()

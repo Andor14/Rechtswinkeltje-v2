@@ -253,8 +253,8 @@ class GameMain extends Sprite
 				//trace ("good answer");
 				
 				main.gameStats.score = main.gameStats.score + casePointsAdd ;
-				screen.goodAnswerSeq(tempDragAnswer.getText());
-				main.sound.playSound("goodanswer");
+				screen.goodAnswerSeq(tempDragAnswer.getText(),true);
+				main.sound.playSound("chat");
 				main.gameStats.casesAnswered = main.gameStats.casesAnswered + 1 ;
 			}
 			else
@@ -262,8 +262,9 @@ class GameMain extends Sprite
 				//trace ("try again");
 				//trace ("inputs: " + tempDragAnswer.getID() + ", " + casesArray[caseID].caseID);
 				
+				screen.goodAnswerSeq(tempDragAnswer.getText(),false);
 				main.gameStats.score = main.gameStats.score - casePointsSub ;
-				main.sound.playSound("badanswer");
+				main.sound.playSound("chat");
 			}
 		}
 		
