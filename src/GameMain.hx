@@ -253,7 +253,7 @@ class GameMain extends Sprite
 				//trace ("good answer");
 				
 				main.gameStats.score = main.gameStats.score + casePointsAdd ;
-				screen.goodAnswerSeq();
+				screen.goodAnswerSeq(tempDragAnswer.getText());
 				main.sound.playSound("goodanswer");
 				main.gameStats.casesAnswered = main.gameStats.casesAnswered + 1 ;
 			}

@@ -21,7 +21,10 @@ class PCScreen extends StaticObject
 	var caseSelected : Bool = false ;
 	var currentCase : Int ;
 	var txtField : TextField ;
+	var txtField2 : TextField ;
+	var textFormat: TextFormat ;
 	var txtBG : ChatBackground ;
+	var txtBG2: ChatBackground ;
 	var timer:Timer ;
 	
 	var textx : Int = 50 ;
@@ -43,6 +46,7 @@ class PCScreen extends StaticObject
 		inputField.x = 50 ;
 		inputField.y = 300 ;
 		inputField.alpha = 0 ;
+		textFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
 	}
 	
 	function startCountdown ()
@@ -53,10 +57,43 @@ class PCScreen extends StaticObject
 		timer.startTimer();
 	}
 	
-	public function goodAnswerSeq ()
+	public function goodAnswerSeq (chatText:String)
+	{
+		txtField2 = new TextField();
+		txtField2.defaultTextFormat = textFormat;	
+		
+		txtField2.x = 100 ;
+		txtField2.y = texty + 30 + txtField.height;
+		txtField2.width = 350 ;
+		txtField2.height = 300 ;
+		txtField2.multiline = true ;
+		txtField2.wordWrap = true ;
+		txtField2.selectable = false ;
+		txtField2.text = chatText;
+		txtField2.alpha = 0 ;
+		txtField2.autoSize = LEFT ;
+		
+		txtBG2 = new ChatBackground((txtField2.width + 10), (txtField2.height + 10));
+		txtBG2.x = txtField2.x - 5 ;
+		txtBG2.y = txtField2.y - 5 ;
+		
+		addChild (txtBG2);
+		addChild (txtField2);
+		
+		Actuate.tween (txtBG2, 1.0 , { alpha:1 } );
+		Actuate.tween (txtField2, 1.0 , { alpha:1 } );
+		
+		
+		haxe.Timer.delay(goodAnswerSeq2, 1000);
+		
+	}
+	
+	function goodAnswerSeq2 ()
 	{
 		Actuate.tween (txtBG, 1.0 , { alpha:0 } );
 		Actuate.tween (txtField, 1.0 , { alpha:0 } );
+		Actuate.tween (txtBG2, 1.0 , { alpha:0 } );
+		Actuate.tween (txtField2, 1.0 , { alpha:0 } );
 		Actuate.tween (inputField, 1.0 , { alpha:0 } );
 		Actuate.tween (onScreen, 2.0 , { alpha:0 } );
 		
@@ -68,6 +105,8 @@ class PCScreen extends StaticObject
 		removeChild(inputField);
 		removeChild(txtField);
 		removeChild(txtBG);
+		removeChild(txtField2);
+		removeChild(txtBG2);
 		removeChild(onScreen);
 		caseSelected = false ;
 		startCountdown();
@@ -101,7 +140,7 @@ class PCScreen extends StaticObject
 	function displayText ()
 	{
 		
-		var textFormat: TextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
+		textFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
 		txtField = new TextField ();
 		txtField.defaultTextFormat = textFormat;	
 		
@@ -125,6 +164,8 @@ class PCScreen extends StaticObject
 		
 		Actuate.tween (txtBG, 1.0 , { alpha:1 } );
 		Actuate.tween (txtField, 1.0 , { alpha:1 } );
+		
+		main.sound.playSound("chat");
 	}
 	
 		function showOnScreen ()

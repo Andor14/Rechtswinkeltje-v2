@@ -15,7 +15,7 @@ import openfl.Assets.loadSound;
  */
 class Music extends Sprite 
 {
-	var Maintheme = Assets.getSound("music/GGJ_Maintheme.mp3");
+	var Maintheme = Assets.getSound("music/Wallpaper.mp3");
 
 	var musicVolume: Float;
 	var soundChannel:SoundChannel;	

@@ -55,6 +55,11 @@ class DragAnswer extends Sprite
 		Actuate.tween (this, 0.6, { alpha:1.0 } );
 	}
 	
+	public function getText ():String
+	{
+		return text ;
+	}
+	
 	public function getID ():Int
 	{
 		return id ;

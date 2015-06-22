@@ -26,6 +26,7 @@ class Sound extends Sprite
 	var badAnswer = Assets.getSound("sound/Beep1.wav");
 	var dropDown1 = Assets.getSound("sound/Dropdown_1.wav");
 	var dropDown2 = Assets.getSound("sound/Dropdown_2.wav");
+	var chat = Assets.getSound("sound/chat_msg.mp3");
 	
 	var soundVolume: Float;
 	var channel:SoundChannel;
@@ -60,6 +61,8 @@ class Sound extends Sprite
 			channel = dropDown1.play( 0, 0, new SoundTransform(soundVolume ) );
 			case "dropdown2" :
 			channel = dropDown2.play( 0, 0, new SoundTransform(soundVolume ) );
+			case "chat" :
+			channel = chat.play( 0, 0, new SoundTransform(soundVolume ) );
 			default :
 			channel = beep.play( 0, 0, new SoundTransform(soundVolume ) );
 		}
