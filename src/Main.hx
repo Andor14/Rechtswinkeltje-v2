@@ -62,7 +62,7 @@ class Main extends Sprite
 		//addChild(advanceScreen);
 		//currentScreen = advanceScreen ;
 		
-		//music.mainMenuMusic();
+		music.mainMenuMusic();
 	}
 	
 	/**

@@ -30,21 +30,23 @@ class Book extends StaticObject
 	var main:Main;
 	var game:GameMain;
 	var jsonPath:String;
+	var openImg:String;
 	public var entrys:Array<Answer> = new Array<Answer>();
 	public var overAnswer:Bool = false ;
 	
 	public var startX:Float ;
 	public var startY:Float ;
 	
-	public function new(image:String,main:Main,gameMain:GameMain,json:String) 
+	public function new(image:String,main:Main,gameMain:GameMain,json:String,openimg:String) 
 	{
 		super(image);
 		this.main = main;
 		this.game = gameMain;
 		this.jsonPath = json;
+		this.openImg = openimg ;
 		
 		createEntrys();
-		openBookObj = new OpenBook("img/bookopen.png",this);
+		openBookObj = new OpenBook(openImg,this);
 		position();
 	}
 	

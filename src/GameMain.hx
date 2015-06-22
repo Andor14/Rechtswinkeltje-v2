@@ -106,7 +106,7 @@ class GameMain extends Sprite
 	
 	function createBooks ()
 	{
-		book1 = new Book("img/book.png",main,this,"lib/book1.json");
+		book1 = new Book("img/book.png",main,this,"lib/book1.json","img/bookopen.png");
 		book1.x = 915;
 		book1.y = 23;
 		book1.startX = book1.x ;
@@ -117,7 +117,7 @@ class GameMain extends Sprite
 		
 		book1.addEventListener( MouseEvent.MOUSE_DOWN, startDraggingBook );
 		
-		book2 = new Book("img/book.png",main,this,"lib/book2.json");
+		book2 = new Book("img/book.png",main,this,"lib/book2.json","img/bookopenkjrw.png");
 		book2.x = 995;
 		book2.y = 23;
 		book2.startX = book2.x ;

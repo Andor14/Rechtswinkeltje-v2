@@ -8,6 +8,9 @@
 		{"ID": 4 ,"text": "case 5, Hey Hey, ik ben Ruben en ik wilt graag bij wat meer werken bij de Albert heijn, helaas staat Mijn baas dat niet toe wegens regelgeving, ik weet niet wat deze regelgeving is. kunnen jullie mij helpen? ", "type": "email", "correct" : 4 },
 		{"ID": 5 ,"text": "case 6, Hey.... , Ik ben thomas en ik heb snoep gejat bij de blokker, ik ben nu gepakt en de baas drijgt er mee om de politie te bellen, wat kan ik verwachten ? Groetjes, thomas! ", "type": "email", "correct" : 5 },
 		{"ID": 6 ,"text": "case 7, Hallo ik ben Andor en moet bij de politie komen. Je kan je voorstellen dat ik verschrikkelijk zenuwachtig ben en ik geen idee heb wat mij te wachten staat. Hebben jullie advies/informatie? ", "type": "email", "correct" : 6 },
-		{"ID": 7 ,"text": "case 8, Hallo ik en Mijn ouders gaan scheiden, Mijn ouders Hebben veelal ruzie gehad en nu is hun huwelijk spaak gelopen, ik vraag me af hoe ik het moet regelen om er voor te zorgen dat ik bij Mijn moeder kan wonen, ik weet niet wat ik moet doen! ", "type": "email", "correct" : 7 }
+		{"ID": 7 ,"text": "case 8, Hallo ik en Mijn ouders gaan scheiden, Mijn ouders Hebben veelal ruzie gehad en nu is hun huwelijk spaak gelopen, ik vraag me af hoe ik het moet regelen om er voor te zorgen dat ik bij Mijn moeder kan wonen, ik weet niet wat ik moet doen! ", "type": "email", "correct" : 7 },
+		{"ID": 20 ,"text": "KJRW Test 1", "type": "email", "correct" : 20 },
+		{"ID": 21 ,"text": "KJRW Test 2", "type": "email", "correct" : 21 },
+		{"ID": 22 ,"text": "KJRW Test 3", "type": "email", "correct" : 22 }
 	]
 }
