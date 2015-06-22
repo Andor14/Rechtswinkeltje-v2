@@ -14,6 +14,7 @@ class DragAnswer extends Sprite
 
 	var text : String ;
 	var id : Int ;
+	var txtBG : ChatBackground ;
 	
 	public function new(inputText:String,inputId:Int) 
 	{
@@ -39,11 +40,11 @@ class DragAnswer extends Sprite
 		txtField.selectable = false ;
 		txtField.text = text;
 		
-		txtField.background = true;
-		txtField.backgroundColor = 0xFFFFFF;
-		txtField.border = true ;
-		txtField.borderColor = 0x000000 ;
+		txtBG = new ChatBackground((txtField.width + 10), (txtField.height + 10));
+		txtBG.x = txtField.x - 5 ;
+		txtBG.y = txtField.y - 5 ;
 		
+		addChild (txtBG);
 		addChild (txtField);
 			
 	}
