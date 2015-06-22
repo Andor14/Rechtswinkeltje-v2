@@ -30,7 +30,7 @@ class Clock extends StaticObject
 	{
 		timeLimit = 10000 ;
 		//timeLimit = 3000 ;
-		//timeLimit = 200 ;
+		//timeLimit = 400 ;
 
 		anglePerTime = 360 / timeLimit ;
 		
@@ -81,6 +81,18 @@ class Clock extends StaticObject
 				arrow.rotation = angle ;
 			}
 		}
+		
+		if  (timeLeft == (timeLimit / 2))
+		{
+				showPopup();
+		}
+	}
+	
+	
+	function showPopup ()
+	{
+		var popup : Popuptext = new Popuptext ("De helft van de tijd is om!", 2000) ;
+		addChild(popup);
 	}
 	
 	function done()
