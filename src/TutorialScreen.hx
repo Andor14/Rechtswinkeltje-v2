@@ -5,15 +5,15 @@ import openfl.text.TextField;
  * ...
  * @author Andor
  */
-class TutorialScreen extends DropdownMenu
+class TutorialScreen extends StaticObject
 {
-	//var title: String = "" ;
-	//var text: String = "" ;
+	var title: String = "" ;
+	var text: String = "" ;
 	
-	//var textField: TextField ;
-	//var titleTextField: TextField ;
+	var textField: TextField ;
+	var titleTextField: TextField ;
 	
-	public function new(gameUI:GameUI,main:Main) 
+	public function new() 
 	{
 		super(gameUI,main);
 	}

@@ -44,7 +44,7 @@ class GameMain extends Sprite
 	public var casesArray:Array<Case> = new Array<Case>();
 	var clock:Clock;
 	var scoreCounter:ScoreCounter;
-	var gamePause:Bool = false ;
+	public var gamePause:Bool = false ;
 	
 	var tempDragAnswer : DragAnswer ;
 	var tempBook : Book ;

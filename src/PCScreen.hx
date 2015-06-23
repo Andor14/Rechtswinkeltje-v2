@@ -254,8 +254,12 @@ class PCScreen extends StaticObject
 	
 	function clickPopup (event:MouseEvent)
 	{
-		removeChild(popup);
-		openCase();
+		if (game.gamePause == false)
+		{
+			removeChild(popup);
+			openCase();
+		}
+		
 	}
 	
 	public function update ()
