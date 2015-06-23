@@ -204,7 +204,6 @@ class OpenBook extends StaticObject
 					bookTxtField.y = ypos ;
 					bookTxtField.x = xpos2 ;
 					currentPage.pageArray.push(bookTxtField);
-
 					
 					ypos = ypos + Std.int(bookTxtField.height) + 15 ;
 					

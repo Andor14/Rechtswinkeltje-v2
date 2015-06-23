@@ -21,11 +21,13 @@ class Main extends Sprite
 	var gameUI:GameUI;
 	var mainMenu:Mainmenu;
 	var advanceScreen:Advancementscreen;
+	var tutorial:TutorialScreen;
 	public var sound:Sound;
 	public var music:Music;
 	public var gameStats:GameStats = new GameStats();
 	var pause:Bool = false ;
 	var pauseOverlay:Bitmap = new Bitmap (Assets.getBitmapData("img/pausescreen.png"));
+	var firstLaunch:Bool = true ;
 	
 	var currentScreen : Dynamic ;
 	
@@ -62,7 +64,7 @@ class Main extends Sprite
 		//addChild(advanceScreen);
 		//currentScreen = advanceScreen ;
 		
-		music.mainMenuMusic();
+		//music.mainMenuMusic();
 	}
 	
 	/**
@@ -104,9 +106,22 @@ class Main extends Sprite
 		
 		gameMain = new GameMain (this);
 		addChild (gameMain);
+		
+		if (firstLaunch == true )
+		{
+			tutorial = new TutorialScreen (this,"img/dropmenu.png");
+			tutorial.x = ((this.stage.stageWidth) / 2) - (tutorial.width/2);
+			tutorial.y = ((this.stage.stageHeight) / 2) - (tutorial.height/2) ;
+			addChild(tutorial);
+			gamePause();
+			firstLaunch = false ;
+		}
+		
 		gameUI = new GameUI(this);
 		addChild(gameUI);
 		currentScreen = gameMain;
+		
+		
 	}
 	
 	public function openAdvanceScreen()
@@ -143,6 +158,12 @@ class Main extends Sprite
 		currentScreen = mainMenu ;
 		resetScore();
 	}
+	
+	public function removeTut ()
+	{
+		removeChild(tutorial);
+	}
+	
 	
 	public function resetScore ()
 	{
