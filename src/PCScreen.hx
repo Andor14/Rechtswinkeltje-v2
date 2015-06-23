@@ -28,6 +28,8 @@ class PCScreen extends StaticObject
 	var timer:Timer ;
 	var goodAnswerImg:StaticObject ;
 	var goodAnswer:Bool;
+	public var answerGiven:Bool = false;
+	public var inputFieldOnScreen:Bool = false ;
 	
 	var textx : Int = 50 ;
 	var texty : Int = 50 ;
@@ -60,7 +62,9 @@ class PCScreen extends StaticObject
 	}
 	
 	public function goodAnswerSeq (chatText:String, goodAnswerInput:Bool )
-	{
+	{	
+		answerGiven = true ;
+		
 		goodAnswer = goodAnswerInput ;
 		
 		txtField2 = new TextField();
@@ -130,6 +134,8 @@ class PCScreen extends StaticObject
 		removeChild(txtField2);
 		removeChild(txtBG2);
 		removeChild(goodAnswerImg);
+		
+		answerGiven = false ;
 	}
 	
 	function goodAnswerSeq2 ()
@@ -171,6 +177,8 @@ class PCScreen extends StaticObject
 		removeChild(txtBG2);
 		removeChild(onScreen);
 		caseSelected = false ;
+		answerGiven = false ;
+		inputFieldOnScreen = false ;
 		startCountdown();
 		
 		removeChild(goodAnswerImg);
@@ -197,6 +205,8 @@ class PCScreen extends StaticObject
 	function displayInputBox ()
 	{
 		addChild(inputField);
+		
+		inputFieldOnScreen = true ;
 		
 		Actuate.tween (inputField, 2.0 , { alpha:1 } );
 	}
@@ -285,20 +295,6 @@ class PCScreen extends StaticObject
 	public function getCaseID ():Int
 	{
 		return currentCase;
-	}
-	
-	public function feedbackGood ()
-	{
-		// WIP
-		
-		var vinkje : StaticObject = new StaticObject ("img/goodanswer.png") ;
-		vinkje.x = this.width / 2 ;
-		vinkje.y = (this.height / 2) + 100 ;
-		addChild(vinkje) ;
-		vinkje.alpha = 0 ;
-		
-		Actuate.tween (vinkje, 1.0 , { alpha:1 } );
-		
 	}
 	
 }

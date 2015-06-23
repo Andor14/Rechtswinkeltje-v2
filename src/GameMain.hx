@@ -246,25 +246,31 @@ class GameMain extends Sprite
 		
 		if (rect.contains(event.stageX, event.stageY))
 		{
-			// check answer
-			if (tempDragAnswer.getID() == casesArray[caseID].caseID)
+			if (screen.inputFieldOnScreen == true)
 			{
-				//trace ("inputs: "+tempDragAnswer.getID()+", "+ casesArray[caseID].caseID);
-				//trace ("good answer");
-				
-				main.gameStats.score = main.gameStats.score + casePointsAdd ;
-				screen.goodAnswerSeq(tempDragAnswer.getText(),true);
-				main.sound.playSound("chat");
-				main.gameStats.casesAnswered = main.gameStats.casesAnswered + 1 ;
-			}
-			else
-			{
-				//trace ("try again");
-				//trace ("inputs: " + tempDragAnswer.getID() + ", " + casesArray[caseID].caseID);
-				
-				screen.goodAnswerSeq(tempDragAnswer.getText(),false);
-				main.gameStats.score = main.gameStats.score - casePointsSub ;
-				main.sound.playSound("chat");
+				if (screen.answerGiven == false )
+				{
+					// check answer
+					if (tempDragAnswer.getID() == casesArray[caseID].caseID)
+					{
+						//trace ("inputs: "+tempDragAnswer.getID()+", "+ casesArray[caseID].caseID);
+						//trace ("good answer");
+						
+						main.gameStats.score = main.gameStats.score + casePointsAdd ;
+						screen.goodAnswerSeq(tempDragAnswer.getText(),true);
+						main.sound.playSound("chat");
+						main.gameStats.casesAnswered = main.gameStats.casesAnswered + 1 ;
+					}
+					else
+					{
+						//trace ("try again");
+						//trace ("inputs: " + tempDragAnswer.getID() + ", " + casesArray[caseID].caseID);
+						
+						screen.goodAnswerSeq(tempDragAnswer.getText(),false);
+						main.gameStats.score = main.gameStats.score - casePointsSub ;
+						main.sound.playSound("chat");
+					}
+				}
 			}
 		}
 		
