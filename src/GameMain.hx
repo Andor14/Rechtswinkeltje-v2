@@ -45,6 +45,7 @@ class GameMain extends Sprite
 	var clock:Clock;
 	var scoreCounter:ScoreCounter;
 	public var gamePause:Bool = false ;
+	var phone : Button ;
 	
 	var tempDragAnswer : DragAnswer ;
 	var tempBook : Book ;
@@ -146,6 +147,11 @@ class GameMain extends Sprite
 		desk.scaleX = 1 ;
 		desk.scaleY = 1 ;
 		addChild(desk);
+		
+		phone = new Button ("img/phone.png", "img/phone2.png");
+		phone.x = 1150 ;
+		phone.y = 350 ;
+		addChild(phone);
 		
 		screen = new PCScreen ("img/pcscreen.png",this,main);
 		screen.x = 20;
