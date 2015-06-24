@@ -23,10 +23,11 @@ class Advancementscreen extends Sprite
 	var playerName: String ;
 	var score: Int ;
 	var answeredCases:Int ;
+	var casesWrong:Int ;
 	
 	var exitButton:Button = new Button("img/Exit.png", "img/Exit2.png");
-	var contButton:Button = new Button("img/continue.png", "img/continue2.png");
-	var menuButton:Button = new Button("img/mainmenu.png", "img/mainmenu2.png");
+	var contButton:Button = new Button("img/scorescreen/speelopnieuw.png", "img/scorescreen/speelopnieuw2.png");
+	var menuButton:Button = new Button("img/scorescreen/Hoofdmenu.png", "img/scorescreen/Hoofdmenu2.png");
 	
 	public function new(input:Main) 
 	{
@@ -34,6 +35,7 @@ class Advancementscreen extends Sprite
 		this.main = input ;
 		playerName = main.gameStats.playerName ;
 		score = main.gameStats.score ;
+		casesWrong = main.gameStats.wrongAnswered ;
 		answeredCases = main.gameStats.casesAnswered ;
 		
 		createBackground();
@@ -43,7 +45,7 @@ class Advancementscreen extends Sprite
 	
 	function createBackground ()
 	{
-		var backGround:StaticObject = new StaticObject("img/background.png");
+		var backGround:StaticObject = new StaticObject("img/scorescreen/bg.png");
 		addChild(backGround);
 	}
 	
@@ -58,12 +60,12 @@ class Advancementscreen extends Sprite
 		addChild( exitButton );
 		
 		contButton.x = (main.stage.stageWidth/2) - (contButton.width / 2 ) + 200;
-		contButton.y = 600;
+		contButton.y = 470;
 		contButton.addEventListener( MouseEvent.CLICK, onClickCont );
 		addChild( contButton );
 		
 		menuButton.x = (main.stage.stageWidth/2) - (menuButton.width / 2 ) - 200;
-		menuButton.y = 600;
+		menuButton.y = 470;
 		menuButton.addEventListener( MouseEvent.CLICK, onClickMenu );
 		addChild( menuButton );
 	}
@@ -87,26 +89,31 @@ class Advancementscreen extends Sprite
 	
 	function showstats()
 	{
-		var scoreTextFormat:TextFormat = new TextFormat("OCR A std", 25, 0xFF0000, true, false, false, null, null, TextFormatAlign.CENTER) ;
+		var scoreTextFormat:TextFormat = new TextFormat("Viner Hand ITC", 26, 0x000000, true, true, false, null, null, TextFormatAlign.LEFT) ;
+		
 		var scoreTextField:TextField = new TextField();
 		scoreTextField.defaultTextFormat = scoreTextFormat ;
-		scoreTextField.width = 700 ;
-		scoreTextField.height = 50 ;
-		scoreTextField.x = ((main.stage.stageWidth) / 2) - (scoreTextField.width / 2);
+		scoreTextField.width = 280 ;
+		scoreTextField.height = 300 ;
+		scoreTextField.x = 280;
 		scoreTextField.y = 100 ;
 		addChild (scoreTextField);
-		scoreTextField.text = playerName+"'s verdiende punten: " + score;
+		scoreTextField.text = playerName+"'s score: " + score;
 		scoreTextField.selectable = false ;
+		scoreTextField.wordWrap = true ;
+		scoreTextField.multiline = true ;
 		
 		var scoreTextField2:TextField = new TextField();
 		scoreTextField2.defaultTextFormat = scoreTextFormat ;
-		scoreTextField2.width = 700 ;
-		scoreTextField2.height = 50 ;
-		scoreTextField2.x = ((main.stage.stageWidth) / 2) - (scoreTextField2.width / 2);
-		scoreTextField2.y = 150 ;
+		scoreTextField2.width = 280 ;
+		scoreTextField2.height = 300 ;
+		scoreTextField2.x = 730;
+		scoreTextField2.y = 100 ;
 		addChild (scoreTextField2);
-		scoreTextField2.text = "Beantwoorde vragen: " + answeredCases;
+		scoreTextField2.text = "Vragen goed beantwoord: " + answeredCases + "  " + "Verkeerde antwoorden: " + casesWrong ;
 		scoreTextField2.selectable = false ;
+		scoreTextField2.wordWrap = true ;
+		scoreTextField2.multiline = true ;
 	}
 	
 }

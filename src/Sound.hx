@@ -16,13 +16,13 @@ import openfl.Assets.loadSound;
 class Sound extends Sprite 
 {
 
-	var click = Assets.getSound("sound/Click.wav");
+	var click = Assets.getSound("sound/click.wav");
 	var beep = Assets.getSound("sound/Beep1.wav");
 	var start = Assets.getSound("sound/start.wav");
 	var boekOpen = Assets.getSound("sound/Boekopen.wav");
 	var boekScroll = Assets.getSound("sound/Boekscroll.wav");
 	var boekDicht = Assets.getSound("sound/Boekdicht.wav");
-	var goodAnswer = Assets.getSound("sound/Beep1.wav");
+	var goodAnswer = Assets.getSound("sound/good.mp3");
 	var badAnswer = Assets.getSound("sound/bad.mp3");
 	var dropDown1 = Assets.getSound("sound/Dropdown_1.wav");
 	var dropDown2 = Assets.getSound("sound/Dropdown_2.wav");

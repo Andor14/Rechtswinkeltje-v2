@@ -26,7 +26,7 @@ class ScoreCounter extends Sprite
 	public function update (input:Int)
 	{
 		score = input ;	
-		scoreTextField.text = "Score: "+score;
+		scoreTextField.text = "Punten: "+score;
 	}
 	
 	function display ()

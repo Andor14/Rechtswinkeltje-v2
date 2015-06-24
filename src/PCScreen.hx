@@ -268,6 +268,7 @@ class PCScreen extends StaticObject
 		{
 			removeChild(popup);
 			openCase();
+			main.sound.playSound("click");
 		}
 		
 	}

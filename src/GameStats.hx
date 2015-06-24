@@ -10,6 +10,7 @@ class GameStats
 	public var score:Int = 0;
 	public var lvl:Int = 0;
 	public var casesAnswered:Int = 0;
+	public var wrongAnswered:Int = 0;
 	
 	public function new() 
 	{

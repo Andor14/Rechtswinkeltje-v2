@@ -61,10 +61,11 @@ class Main extends Sprite
 		addChild(mainMenu);
 		currentScreen = mainMenu ;
 		
+		//advanceScreen = new Advancementscreen(this);
 		//addChild(advanceScreen);
 		//currentScreen = advanceScreen ;
 		
-		//music.mainMenuMusic();
+		music.mainMenuMusic();
 	}
 	
 	/**
@@ -121,6 +122,8 @@ class Main extends Sprite
 		addChild(gameUI);
 		currentScreen = gameMain;
 		
+		resetScore();
+		
 		
 	}
 	
@@ -169,6 +172,7 @@ class Main extends Sprite
 	{
 		gameStats.score = 0 ;
 		gameStats.casesAnswered = 0 ;
+		gameStats.wrongAnswered = 0 ;
 	}
 	
 	public function gamePause ()

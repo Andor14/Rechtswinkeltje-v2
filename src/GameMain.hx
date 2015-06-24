@@ -80,7 +80,7 @@ class GameMain extends Sprite
 	
 	function createBackground ()
 	{
-		var backGround:StaticObject = new StaticObject("img/background.png");
+		var backGround:StaticObject = new StaticObject("img/gamebackground.png");
 		addChild(backGround);
 	}
 	
@@ -268,6 +268,7 @@ class GameMain extends Sprite
 						
 						screen.goodAnswerSeq(tempDragAnswer.getText(),false);
 						main.gameStats.score = main.gameStats.score - casePointsSub ;
+						main.gameStats.wrongAnswered = main.gameStats.wrongAnswered + 1 ;
 						main.sound.playSound("chat");
 					}
 				}
