@@ -32,11 +32,12 @@ class ScoreCounter extends Sprite
 	function display ()
 	{
 		
-		var scoreTextFormat:TextFormat = new TextFormat("Viner Hand ITC", 25, 0x000000, true, true, false, null, null, TextFormatAlign.CENTER) ;
+		var scoreTextFormat:TextFormat = new TextFormat("Viner Hand ITC", 25, 0x000000, true, true, false, null, null, TextFormatAlign.LEFT) ;
 		scoreTextField = new TextField();
 		scoreTextField.defaultTextFormat = scoreTextFormat ;
 		scoreTextField.width = 400 ;
 		scoreTextField.height = 50 ;
+		scoreTextField.x = 140 ;
 		scoreTextField.selectable = false ;
 		addChild (scoreTextField);
 	}

@@ -1,13 +1,13 @@
 {
 	"book1": 
 	[
-		{"ID": 0 , "text": "Tot je 18e moet je gewoon naar school. Behalve als je een mbo 2-, havo- of vwo-diploma gehaald hebt. In dat geval moet je tot je 16e naar school. "},
-		{"ID": 1 , "text": "Examenfraude is het opzettelijk beinvloeden van de eindresultaten D.M.V spiekbriesjes en andere methoden, dit is strafbaar en kan resulteren in schorsing en zitten blijven.. "},
-		{"ID": 2 , "text": "Beledigen is geregeld in artikel 266 wetboek van strafrecht. Er zijn twee vereisten; De beledegingen moeten naar iemand gericht zijn en de belediging moet met opzet zijn geuit."},
-		{"ID": 3 , "text": "Ontslagen worden betekent dat je baas zegt dat je niet meer bij hem of haar mag werken. Dat mag hij of zij niet zomaar doen. Daar moet hij een goede reden voor hebben! "},
-		{"ID": 4 , "text": "Onder je 18e mag je niet te zwaar of gevaarlijk werk doen. Je mag ook niet te lang werken, omdat je ook nog naar school moet. "},
-		{"ID": 5 , "text": "Als je iets doet wat niet mag, houd je je niet aan de regels en kun je straf krijgen."},
-		{"ID": 6 , "text": "Als je iets gedaan hebt wat niet mag dan mag de politie je vragen stellen. Belangrijk is dat je altijd eerlijk zegt wie je bent en waar je woont."},
-		{"ID": 7 , "text": "Vanaf 12 mag je aan de rechter vertellen bij wie je zou willen gaan wonen. De rechter luistert goed naar jouw mening, maar neemt zelf een beslissing. "}
+		{"ID": 0 , "text": "Tot je 18e moet je gewoon naar school. Behalve als je een mbo 2-, havo- of vwo-diploma gehaald hebt. In dat geval moet je tot je 16e naar school. Je kan verwachten dat school actie gaat ondernemen, dit kan resulteren in bijvoorbeeld een schorsing indien de mate ernstig is."},
+		{"ID": 1 , "text": "Examenfraude is het opzettelijk beinvloeden van de eindresultaten D.M.V spiekbriesjes en andere methoden. School treed over het algemeen hard op tegen spijbelen, je kan verwachten dat de toets die je hebt gemaakt een 1 word, je kan ook geschorst worden."},
+		{"ID": 2 , "text": "Als je word gepest moet je actie ondernemen, zorg er voor day je school er Vanaf op de hoogte stelt."},
+		{"ID": 3 , "text": "Zomaar Ontslagen worden mag niet mits je er langer dan 2 maanden werkt, je moet ook goed in je arbeidsovereenkomst kijken! hij moet dus een goede reden hebben."},
+		{"ID": 4 , "text": "Onder je 18e mag je niet te zwaar of gevaarlijk werk doen. Je mag ook niet te lang werken, omdat je ook nog naar school moet. Naarmate je ouder word mag je ook meer uren maken, vraag aan je baas wat de mogelijkheden zijn."},
+		{"ID": 5 , "text": "Als je iets doet wat niet mag, houd je je niet aan de regels en kun je straf krijgen, dit is altijd zo als je iets steelt."},
+		{"ID": 6 , "text": "Als je iets gedaan hebt wat niet mag dan mag de politie je vragen stellen. Belangrijk is dat je altijd eerlijk zegt wie je bent en wat je hebt gedaan, tenzij je advocaat het anders meld."},
+		{"ID": 7 , "text": "Vanaf 12 jaar mag je aan de rechter vertellen bij wie je zou willen gaan wonen. De rechter luistert goed naar jouw mening, maar neemt zelf een beslissing."}
 	]
 }
