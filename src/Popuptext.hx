@@ -25,7 +25,7 @@ class Popuptext extends Sprite
 		this.text = inputText ;
 		this.dur = time ;
 		
-		textFormat = new TextFormat("OCR A std", 20, 0xE60000, true, false, false, null, null, TextFormatAlign.CENTER) ;
+		textFormat = new TextFormat("Calibri", 20, 0xE60000, true, false, false, null, null, TextFormatAlign.CENTER) ;
 		drawText();
 		animate();
 		

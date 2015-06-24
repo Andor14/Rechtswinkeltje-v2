@@ -109,7 +109,7 @@ class Main extends Sprite
 		
 		if (firstLaunch == true )
 		{
-			tutorial = new TutorialScreen (this,"img/dropmenu.png");
+			tutorial = new TutorialScreen (this,"img/tutbg.png");
 			tutorial.x = ((this.stage.stageWidth) / 2) - (tutorial.width/2);
 			tutorial.y = ((this.stage.stageHeight) / 2) - (tutorial.height/2) ;
 			addChild(tutorial);
@@ -168,6 +168,7 @@ class Main extends Sprite
 	public function resetScore ()
 	{
 		gameStats.score = 0 ;
+		gameStats.casesAnswered = 0 ;
 	}
 	
 	public function gamePause ()

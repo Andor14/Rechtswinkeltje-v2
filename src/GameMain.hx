@@ -117,7 +117,7 @@ class GameMain extends Sprite
 		
 		book1.addEventListener( MouseEvent.MOUSE_DOWN, startDraggingBook );
 		
-		book2 = new Book("img/book.png",main,this,"lib/book2.json","img/bookopenkjrw.png");
+		book2 = new Book("img/book2.png",main,this,"lib/book2.json","img/bookopenkjrw.png");
 		book2.x = 995;
 		book2.y = 23;
 		book2.startX = book2.x ;
@@ -155,8 +155,8 @@ class GameMain extends Sprite
 		addChild(screen);
 		
 		scoreCounter = new ScoreCounter ();
-		scoreCounter.x = 500 ;
-		scoreCounter.y = 5 ;
+		scoreCounter.x = 480 ;
+		scoreCounter.y = 185 ;
 		addChild(scoreCounter);
 		
 		
@@ -165,8 +165,8 @@ class GameMain extends Sprite
 	function createClock ()
 	{
 		clock = new Clock(this);
-		clock.x = 550 + 85 ;
-		clock.y = 50 + 85 ;
+		clock.x = 620 + 85 ;
+		clock.y = 2 + 85 ;
 		addChild(clock);
 	}
 	

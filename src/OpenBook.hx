@@ -45,7 +45,7 @@ class OpenBook extends StaticObject
 	
 	function bookInit ()
 	{
-		bookTextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
+		bookTextFormat = new TextFormat("Calibri", 14, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
 	}
 	
 	function addPageNumbers ()
@@ -83,21 +83,21 @@ class OpenBook extends StaticObject
 	
 	function addButtons()
 	{
-		closeButton = new Button ("img/bookclose.png", "img/bookclose2.png");
-		closeButton.x = 600 ;
-		closeButton.y = 15 ;
+		closeButton = new Button ("img/bookbuttons/close.png", "img/bookbuttons/close_hover.png");
+		closeButton.x = 581 ;
+		closeButton.y = 17 ;
 		closeButton.addEventListener( MouseEvent.CLICK, clickButton );
 		addChild(closeButton);
 		
-		nextPageButton = new Button ("img/bookclose.png", "img/bookclose2.png");
-		nextPageButton.x = 600 ;
-		nextPageButton.y = 380 ;
+		nextPageButton = new Button ("img/bookbuttons/right.png", "img/bookbuttons/right_hover.png");
+		nextPageButton.x = 575 ;
+		nextPageButton.y = 353 ;
 		nextPageButton.addEventListener( MouseEvent.CLICK, nextPage );
 		addChild(nextPageButton);
 		
-		prevPageButton = new Button ("img/bookclose.png", "img/bookclose2.png");
-		prevPageButton.x = 10 ;
-		prevPageButton.y = 380 ;
+		prevPageButton = new Button ("img/bookbuttons/left.png", "img/bookbuttons/left_hover.png");
+		prevPageButton.x = 15 ;
+		prevPageButton.y = 353 ;
 		prevPageButton.addEventListener( MouseEvent.CLICK, prevPage );
 		addChild(prevPageButton);
 		
@@ -139,6 +139,7 @@ class OpenBook extends StaticObject
 		var xpos2: Int = 320 ;
 		var pageLength:Int = 341 ;
 		var page2:Bool = false ;
+		var emptySpace: Int = 25 ;
 		
 		var page:Page = new Page();
 		var currentPage:Page = page;
@@ -150,7 +151,15 @@ class OpenBook extends StaticObject
 			var bookTxtField : BookTextField = new BookTextField ();
 			bookTxtField.defaultTextFormat = bookTextFormat;
 			
-			bookTxtField.x = xpos;
+			if (page2 == false )
+			{
+				bookTxtField.x = xpos;
+			}
+			else
+			{
+				bookTxtField.x = xpos2;
+			}
+			
 			bookTxtField.y = ypos;
 			bookTxtField.width = 290 ;
 			//bookTxtField.height = 50 ;
@@ -167,14 +176,16 @@ class OpenBook extends StaticObject
 			var txtMetrics : TextLineMetrics = bookTxtField.getLineMetrics(bookTxtField.numLines -1);
 			
 			//trace (txtMetrics.width);
-			//trace (txtMetrics.height);
+			//trace (txtMetrics.height * bookTxtField.numLines);
+			
 			
 			bookTxtField.addEventListener( MouseEvent.MOUSE_DOWN, clickAnswer );
 			bookTxtField.addEventListener(MouseEvent.MOUSE_OVER,mouseOverAnswer);
 			bookTxtField.addEventListener(MouseEvent.MOUSE_OUT,mouseOutAnswer);
-				
+			
 
-			ypos = ypos + Std.int(bookTxtField.height) + 15 ;
+			ypos = ypos + Std.int(bookTxtField.height) + emptySpace ;
+			
 
 			if ((bookTxtField.y + Std.int(bookTxtField.height)) > pageLength )
 			{
@@ -193,7 +204,9 @@ class OpenBook extends StaticObject
 					bookTxtField.x = xpos ;
 					currentPage.pageArray.push(bookTxtField);
 					
-					ypos = ypos + Std.int(bookTxtField.height) + 15 ;
+					
+					ypos = ypos + Std.int(bookTxtField.height) + emptySpace ;
+					
 				}
 				else
 				{
@@ -205,7 +218,9 @@ class OpenBook extends StaticObject
 					bookTxtField.x = xpos2 ;
 					currentPage.pageArray.push(bookTxtField);
 					
-					ypos = ypos + Std.int(bookTxtField.height) + 15 ;
+					
+					ypos = ypos + Std.int(bookTxtField.height) + emptySpace ;
+					
 					
 				}
 			}

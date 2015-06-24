@@ -214,7 +214,7 @@ class PCScreen extends StaticObject
 	function displayText ()
 	{
 		
-		textFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
+		textFormat = new TextFormat("Calibri", 12, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
 		txtField = new TextField ();
 		txtField.defaultTextFormat = textFormat;	
 		

@@ -1,8 +1,10 @@
 {
 	"book1": 
 	[
-		{"ID": 20 , "text": "KJRW Test 1"},
-		{"ID": 21 , "text": "KJRW Test 2"},
-		{"ID": 22 , "text": "KJRW Test 3"}
+		{"ID": 20 , "text": "Bij de KJRW kan je altijd terecht voor vragen en antwoorden, dit kan via de telefoon maar ook op onze locatie, hier beneden staan de algemene contact gegevens voor de KJRW. Locatie: De Kinder- en Jongerenrechtswinkel, Waterloolaan 1, 9725 BE Groningen, Telefoon/ email: 050 312 50 40, info@kjrw-noord.nl."},
+		{"ID": 21 , "text": "De KJRW nodigd je graag uit om een kijkje te nemen op onze KJRWeetjes pagina, hier staan persoonlijke verhalen en verschillende problemen. Dit zou je een goed inzicht moeten geven in met wat voor problemen wij te maken hebben. (http://noord.kjrw.nl/nieuwtjes/)"},
+		{"ID": 22 , "text": "Ja, het is het mogelijk om anoniem te blijven, de KJRW bied de mogelijkheid om te chatten op onze website."},
+		{"ID": 23 , "text": "Bij de KJRW kun je op de KJRW website een vraag stellen. (http://noord.kjrw.nl/contact/)"},
+		{"ID": 24 , "text": "De KJRW is een jongeren initiatief van uit de rechten studies, hier kan je meer lezen (http://noord.kjrw.nl/over-ons/)"}
 	]
 }

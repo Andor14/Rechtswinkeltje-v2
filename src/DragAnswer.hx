@@ -29,7 +29,7 @@ class DragAnswer extends Sprite
 	
 	function displayText ()
 	{
-		var textFormat: TextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
+		var textFormat: TextFormat = new TextFormat("Calibri", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
 		var txtField : TextField = new TextField ();
 		txtField.defaultTextFormat = textFormat;
 

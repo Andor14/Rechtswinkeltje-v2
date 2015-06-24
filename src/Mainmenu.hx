@@ -67,7 +67,7 @@ class Mainmenu extends Sprite
 	
 	function createNameField()
 	{
-		var inputTextFormat:TextFormat = new TextFormat("OCR A std", 20, 0x000000, true, false, false, null, null, TextFormatAlign.CENTER) ;
+		var inputTextFormat:TextFormat = new TextFormat("Viner Hand ITC", 23, 0x000000, true, true, false, null, null, TextFormatAlign.CENTER) ;
 		
 		inputText = new TextField();
 		

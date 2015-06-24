@@ -23,7 +23,7 @@ class Sound extends Sprite
 	var boekScroll = Assets.getSound("sound/Boekscroll.wav");
 	var boekDicht = Assets.getSound("sound/Boekdicht.wav");
 	var goodAnswer = Assets.getSound("sound/Beep1.wav");
-	var badAnswer = Assets.getSound("sound/Beep1.wav");
+	var badAnswer = Assets.getSound("sound/bad.mp3");
 	var dropDown1 = Assets.getSound("sound/Dropdown_1.wav");
 	var dropDown2 = Assets.getSound("sound/Dropdown_2.wav");
 	var chat = Assets.getSound("sound/chat_msg.mp3");

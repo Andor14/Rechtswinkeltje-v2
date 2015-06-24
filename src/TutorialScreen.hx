@@ -15,17 +15,17 @@ import openfl.text.TextFieldAutoSize;
  */
 class TutorialScreen extends StaticObject
 {
-	var title: String = "Wat te doen?" ;
-	var text: String = "Speel dit spel, bla bla bla bal abla banwjad jifwanfwna nfwnafianwi nfjwnafnawi nfjwnafnwai jiu" ;
+	var title: String = "Welkom." ;
+	var text: String = "Je hebt je eigen rechtswinkeltje opgezet, en de eerste klanten staan al klaar! Verdien punten door zo veel mogelijk van hun vragen te beantwoorden voor de tijd op is. Wanneer je een berichtje krijgt, klik op het scherm om te beginnen. Sleep daarna een boek uit de boekenkast op de tafel om het antwoord op te zoeken. Wanneer je je antwoord gevonden hebt, sleep deze naar het invul hokje onder het scherm. Veel succes!" ;
 	
 	var textField: TextField ;
 	var titleTextField: TextField ;
 	
 	var main:Main;
 	
-	var contButton:Button = new Button("img/continue.png", "img/continue2.png");
-	var TitletextFormat : TextFormat = new TextFormat("OCR A std", 20, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
-	var textFormat : TextFormat = new TextFormat("OCR A std", 10, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
+	var contButton:Button = new Button("img/tutstart2.jpg", "img/tutstart.jpg");
+	var TitletextFormat : TextFormat = new TextFormat("Calibri", 20, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
+	var textFormat : TextFormat = new TextFormat("Calibri", 15, 0x000000, true, false, false, null, null, TextFormatAlign.LEFT) ;
 	
 	
 	public function new(main:Main,img:String) 
@@ -49,7 +49,7 @@ class TutorialScreen extends StaticObject
 		titleTextField.autoSize = LEFT ;
 		titleTextField.wordWrap = true ;
 		titleTextField.multiline = true ;
-		titleTextField.x = 10 ;
+		titleTextField.x = 25 ;
 		titleTextField.y = 20 ;
 		
 		addChild(titleTextField);
@@ -62,13 +62,13 @@ class TutorialScreen extends StaticObject
 		
 		textField.selectable = false ;
 		textField.text = text;
-		textField.width = 380 ;
+		textField.width = 350 ;
 		textField.height = 400 ;
 		//textField.autoSize = LEFT ;
 		textField.wordWrap = true ;
 		textField.multiline = true ;
-		textField.x = 10 ;
-		textField.y = 50 ;
+		textField.x = 25 ;
+		textField.y = 70 ;
 		
 		addChild(textField);
 	}
@@ -76,13 +76,14 @@ class TutorialScreen extends StaticObject
 	function drawbutton ()
 	{
 		contButton.x = (this.width/2) - (contButton.width / 2 );
-		contButton.y = 450;
+		contButton.y = 503;
 		contButton.addEventListener( MouseEvent.CLICK, removeThis );
 		addChild( contButton );
 	}
 	
 	function removeThis (event:MouseEvent)
 	{
+		main.sound.playSound("click");
 		main.gameUnPause();
 		main.removeTut();
 		
