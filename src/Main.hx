@@ -1,6 +1,8 @@
 package ;
 
 import flash.display.Sprite;
+import flash.display.Stage;
+import flash.display.StageScaleMode;
 import flash.events.Event;
 import openfl.Assets;
 import openfl.display.Bitmap;
@@ -65,7 +67,7 @@ class Main extends Sprite
 		//addChild(advanceScreen);
 		//currentScreen = advanceScreen ;
 		
-		music.mainMenuMusic();
+		//music.mainMenuMusic();
 	}
 	
 	/**
@@ -81,14 +83,15 @@ class Main extends Sprite
 	
 	public function toggleFullscreen() 
 	{
-		if (Lib.current.stage.displayState != StageDisplayState.FULL_SCREEN_INTERACTIVE)
+		if (stage.displayState != StageDisplayState.FULL_SCREEN_INTERACTIVE)
 		{
-			Lib.current.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+			stage.scaleMode = StageScaleMode.EXACT_FIT ;
+			stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 			
 		}
 		else 
 		{
-			Lib.current.stage.displayState = StageDisplayState.NORMAL;
+			stage.displayState = StageDisplayState.NORMAL;
 		}
 	}
 
